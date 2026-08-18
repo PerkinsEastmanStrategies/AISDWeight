@@ -1,8 +1,10 @@
 import type { Catalog } from "./types";
 import type {
+  CompanySuggestionsV3,
   HierarchyFocusArea,
   HierarchySchoolLevel,
   HierarchySpaceType,
+  RollupSuggestion,
   SiteHierarchy,
   WeightEntry,
   WeightingSession,
@@ -364,5 +366,51 @@ export function setSuggestionOnly(
         [key]: { ...current, ...patch, touched: true },
       },
     },
+  };
+}
+
+export function packWeightEntries(
+  map: Record<string, WeightEntry>,
+  labelFor: (key: string) => string,
+): RollupSuggestion[] {
+  return Object.entries(map)
+    .filter(([, e]) => e.importance != null)
+    .map(([key, e]) => ({
+      key,
+      label: labelFor(key),
+      importance: e.importance!,
+      comment: e.comment.trim() || undefined,
+      includeInScore: e.includeInScore,
+    }));
+}
+
+export function buildCompanySuggestionsV3(
+  session: WeightingSession,
+  hierarchy: SiteHierarchy,
+  level: HierarchySchoolLevel,
+): CompanySuggestionsV3 {
+  if (!session.schoolLevel) {
+    throw new Error("Select a school level first.");
+  }
+  return {
+    version: 3,
+    company: session.company.trim(),
+    contact: session.contact.trim() || undefined,
+    schoolLevel: session.schoolLevel,
+    exportedAt: new Date().toISOString(),
+    hierarchyGeneratedAt: hierarchy.meta.generatedAt,
+    focusAreaWeights: packWeightEntries(session.focusAreaWeights, (k) =>
+      k.split("||").slice(-1)[0],
+    ),
+    spaceTypeWeights: packWeightEntries(session.spaceTypeWeights, (k) => {
+      const hit = findSpaceType(level, k);
+      return hit?.spaceType.name ?? k;
+    }),
+    categoryWeights: packWeightEntries(session.categoryWeights, (k) =>
+      k.split("||").slice(-1)[0],
+    ),
+    subcategoryWeights: packWeightEntries(session.subcategoryWeights, (k) =>
+      k.split("||").slice(-1)[0],
+    ),
   };
 }

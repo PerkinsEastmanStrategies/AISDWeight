@@ -12,6 +12,7 @@
     "import-requirements": "node scripts/import-requirements.mjs"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.112.3",
     "file-saver": "^2.0.5",
     "jszip": "^3.10.1",
     "react": "^19.2.8",

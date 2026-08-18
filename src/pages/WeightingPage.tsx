@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { useAppData } from "../lib/DataContext";
 import type {
-  CompanySuggestionsV3,
   HierarchySpaceType,
   SchoolLevelId,
   WeightEntry,
@@ -24,7 +23,9 @@ import {
   subcategoryKey,
   subcategoriesForCatalogSpace,
   updateLinkedSuggestion,
+  buildCompanySuggestionsV3,
 } from "../lib/weighting";
+import { submitWeightingToSupabase } from "../lib/submitWeighting";
 import {
   clearWeightingSession,
   loadWeightingSession,
@@ -77,6 +78,8 @@ export function WeightingPage() {
   const [nav, setNav] = useState<NavSelection>({});
   const [expanded, setExpanded] = useState<Record<string, boolean>>({});
   const [submitMsg, setSubmitMsg] = useState("");
+  const [submitKind, setSubmitKind] = useState<"info" | "warn">("info");
+  const [submitting, setSubmitting] = useState(false);
 
   useEffect(() => {
     saveWeightingSession(session);
@@ -210,45 +213,7 @@ export function WeightingPage() {
       alert("Enter a company name first.");
       return;
     }
-
-    const pack = (
-      map: Record<string, WeightEntry>,
-      labelFor: (key: string) => string,
-    ) =>
-      Object.entries(map)
-        .filter(([, e]) => e.importance != null)
-        .map(([key, e]) => ({
-          key,
-          label: labelFor(key),
-          importance: e.importance!,
-          comment: e.comment.trim() || undefined,
-          includeInScore: e.includeInScore,
-        }));
-
-    const out: CompanySuggestionsV3 = {
-      version: 3,
-      company: session.company.trim(),
-      contact: session.contact.trim() || undefined,
-      schoolLevel: session.schoolLevel,
-      exportedAt: new Date().toISOString(),
-      hierarchyGeneratedAt: hierarchy.meta.generatedAt,
-      focusAreaWeights: pack(
-        session.focusAreaWeights,
-        (k) => k.split("||").slice(-1)[0],
-      ),
-      spaceTypeWeights: pack(session.spaceTypeWeights, (k) => {
-        const hit = findSpaceType(level, k);
-        return hit?.spaceType.name ?? k;
-      }),
-      categoryWeights: pack(
-        session.categoryWeights,
-        (k) => k.split("||").slice(-1)[0],
-      ),
-      subcategoryWeights: pack(
-        session.subcategoryWeights,
-        (k) => k.split("||").slice(-1)[0],
-      ),
-    };
+    const out = buildCompanySuggestionsV3(session, hierarchy, level);
     const slug = `${out.company}-${out.schoolLevel}`.replace(/\s+/g, "-").toLowerCase();
     downloadJson(`rollup-suggestions-${slug}.json`, out);
   }
@@ -258,12 +223,12 @@ export function WeightingPage() {
     return schoolLevelReviewCounts(catalog, level, session);
   }, [catalog, level, session]);
 
-  function submit() {
+  async function submit() {
     if (!session.company.trim()) {
       alert("Enter a company name first.");
       return;
     }
-    if (!session.schoolLevel) {
+    if (!hierarchy || !level || !session.schoolLevel) {
       alert("Select a school level first.");
       return;
     }
@@ -273,15 +238,28 @@ export function WeightingPage() {
     );
     if (remaining > 0) {
       const ok = confirm(
-        `You still have ${remaining} unreviewed item(s). Submit this session anyway? It will be saved on this computer (database connection comes later).`,
+        `You still have ${remaining} unreviewed item(s). Submit this session to the database anyway?`,
       );
       if (!ok) return;
     }
-    const submittedAt = new Date().toISOString();
-    setSession((s) => ({ ...s, submittedAt }));
-    setSubmitMsg(
-      `Saved locally at ${new Date(submittedAt).toLocaleString()}. A database connection can be added later.`,
-    );
+    setSubmitting(true);
+    setSubmitMsg("");
+    try {
+      const payload = buildCompanySuggestionsV3(session, hierarchy, level);
+      const result = await submitWeightingToSupabase(payload, level);
+      const submittedAt = payload.exportedAt;
+      setSession((s) => ({ ...s, submittedAt }));
+      setSubmitKind("info");
+      setSubmitMsg(
+        `Saved to the database at ${new Date(submittedAt).toLocaleString()} (${result.itemCount} weights).`,
+      );
+    } catch (err) {
+      const message = err instanceof Error ? err.message : "Submit failed.";
+      setSubmitKind("warn");
+      setSubmitMsg(`Could not save to the database. ${message}`);
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   if (!hierarchy) {
@@ -377,8 +355,13 @@ export function WeightingPage() {
           </select>
         </div>
         <div className="row" style={{ marginTop: "0.75rem" }}>
-          <button type="button" className="btn primary" onClick={submit}>
-            Submit
+          <button
+            type="button"
+            className="btn primary"
+            onClick={() => void submit()}
+            disabled={submitting}
+          >
+            {submitting ? "Submitting…" : "Submit"}
           </button>
           <button type="button" className="btn" onClick={download}>
             Download JSON
@@ -405,7 +388,10 @@ export function WeightingPage() {
           </p>
         )}
         {submitMsg && (
-          <div className="callout info" style={{ marginTop: "0.75rem", marginBottom: 0 }}>
+          <div
+            className={`callout ${submitKind}`}
+            style={{ marginTop: "0.75rem", marginBottom: 0 }}
+          >
             {submitMsg}
           </div>
         )}
