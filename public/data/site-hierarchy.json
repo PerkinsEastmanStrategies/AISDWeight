@@ -1,0 +1,1680 @@
+{
+  "meta": {
+    "sourceFile": "ESA Space Type Surey Requirements.xlsx",
+    "generatedAt": "2026-08-18T14:22:47.192Z",
+    "note": "Site → Focus Area → Space Type requirements by school level. Categories/subcategories come from catalog when matched."
+  },
+  "schoolLevels": [
+    {
+      "id": "ES",
+      "label": "Elementary",
+      "focusAreas": [
+        {
+          "name": "Arrival/Administration",
+          "navLabel": "Arrival/Administration",
+          "scoringFocus": "Arrival/Administration",
+          "baselineWeight": 6,
+          "importanceSeed": 6,
+          "spaceTypes": [
+            {
+              "id": "ES::main-entry-reception-main-admin-suite",
+              "name": "Main Entry/Reception/Main Admin Suite",
+              "scoreCode": "ME",
+              "required": true,
+              "baselineWeight": 12,
+              "importanceSeed": 12,
+              "minSurveys": 1,
+              "navFocusArea": "Arrival/Administration",
+              "scoringFocus": "Arrival/Administration",
+              "catalogSpaceTypeId": "admin-offices__main-admin-suite",
+              "catalogSpaceTypeName": "Main Admin Suite"
+            },
+            {
+              "id": "ES::community-partners-suite",
+              "name": "Community Partners Suite",
+              "scoreCode": "CP",
+              "required": true,
+              "baselineWeight": 6,
+              "importanceSeed": 6,
+              "minSurveys": 1,
+              "navFocusArea": "Arrival/Administration",
+              "scoringFocus": "Arrival/Administration",
+              "catalogSpaceTypeId": "community-partners-suite__community-partners-suite",
+              "catalogSpaceTypeName": "Community Partners Suite"
+            },
+            {
+              "id": "ES::admin-offices",
+              "name": "Admin Offices",
+              "scoreCode": "AD",
+              "required": true,
+              "baselineWeight": 9,
+              "importanceSeed": 9,
+              "minSurveys": 2,
+              "notes": "Assess 2 offices or 3 if there are varying conditions",
+              "navFocusArea": "Arrival/Administration",
+              "scoringFocus": "Arrival/Administration",
+              "catalogSpaceTypeId": "admin-offices__admin-offices",
+              "catalogSpaceTypeName": "Admin Offices"
+            },
+            {
+              "id": "ES::professional-learning-center",
+              "name": "Professional Learning Center",
+              "scoreCode": "PL",
+              "required": true,
+              "baselineWeight": 9,
+              "importanceSeed": 9,
+              "minSurveys": 3,
+              "notes": "Should be assessed per neighborhood",
+              "navFocusArea": "Arrival/Administration",
+              "scoringFocus": "Arrival/Administration",
+              "catalogSpaceTypeId": "plcs__professional-learning-center",
+              "catalogSpaceTypeName": "Professional Learning Center"
+            },
+            {
+              "id": "ES::mental-wellness-and-counseling-suite",
+              "name": "Mental Wellness and Counseling Suite",
+              "scoreCode": "CO",
+              "required": true,
+              "baselineWeight": 12,
+              "importanceSeed": 12,
+              "minSurveys": 1,
+              "navFocusArea": "Arrival/Administration",
+              "scoringFocus": "Arrival/Administration",
+              "catalogSpaceTypeId": "mw-and-counseling-suite__mental-wellness-and-counseling-suite",
+              "catalogSpaceTypeName": "Mental Wellness and Counseling Suite"
+            }
+          ]
+        },
+        {
+          "name": "Studios",
+          "navLabel": "Studios",
+          "scoringFocus": "Studios",
+          "baselineWeight": 12,
+          "importanceSeed": 12,
+          "spaceTypes": [
+            {
+              "id": "ES::early-childhood-studio",
+              "name": "Early childhood studio",
+              "scoreCode": "PK",
+              "required": true,
+              "baselineWeight": 12,
+              "importanceSeed": 12,
+              "minSurveys": 1,
+              "notes": "Assess 1 representative room. Include a 2nd room if conditions vary.",
+              "navFocusArea": "Studios",
+              "scoringFocus": "Studios",
+              "catalogSpaceTypeId": "prek__early-childhood-studio",
+              "catalogSpaceTypeName": "Early childhood studio"
+            },
+            {
+              "id": "ES::traditional-studio",
+              "name": "Traditional Studio",
+              "scoreCode": "ST",
+              "required": true,
+              "baselineWeight": 12,
+              "importanceSeed": 12,
+              "minSurveys": 8,
+              "notes": "Two per neighborhood based on medium sized school",
+              "navFocusArea": "Studios",
+              "scoringFocus": "Studios",
+              "catalogSpaceTypeId": "studios__traditional-studio",
+              "catalogSpaceTypeName": "Traditional Studio"
+            },
+            {
+              "id": "ES::art",
+              "name": "Art",
+              "scoreCode": "EA",
+              "required": true,
+              "baselineWeight": 12,
+              "importanceSeed": 12,
+              "minSurveys": 1,
+              "notes": "The assessor should review the room that was designed to be an art room",
+              "navFocusArea": "Studios",
+              "scoringFocus": "Studios",
+              "catalogSpaceTypeId": "community-partners-suite__community-partners-suite",
+              "catalogSpaceTypeName": "Community Partners Suite"
+            },
+            {
+              "id": "ES::music-studio",
+              "name": "Music Studio",
+              "scoreCode": "MU",
+              "required": true,
+              "baselineWeight": 12,
+              "importanceSeed": 12,
+              "minSurveys": 1,
+              "notes": "The assessor should review the room that was designed to be a music room",
+              "navFocusArea": "Studios",
+              "scoringFocus": "Studios",
+              "catalogSpaceTypeId": null,
+              "catalogSpaceTypeName": null
+            },
+            {
+              "id": "ES::maker-space",
+              "name": "Maker Space",
+              "scoreCode": "MS",
+              "required": true,
+              "baselineWeight": 9,
+              "importanceSeed": 9,
+              "minSurveys": 1,
+              "notes": "The assessor should review the room that was designed to be a maker space",
+              "navFocusArea": "Studios",
+              "scoringFocus": "Studios",
+              "catalogSpaceTypeId": "maker-space__maker-space",
+              "catalogSpaceTypeName": "Maker Space"
+            },
+            {
+              "id": "ES::science",
+              "name": "Science",
+              "scoreCode": "SC",
+              "required": false,
+              "baselineWeight": 3,
+              "importanceSeed": 3,
+              "minSurveys": 0,
+              "notes": "The assessor should review the room that was designed to be a maker space",
+              "navFocusArea": "Studios",
+              "scoringFocus": "Studios",
+              "catalogSpaceTypeId": "science__science",
+              "catalogSpaceTypeName": "Science"
+            }
+          ]
+        },
+        {
+          "name": "Special Education",
+          "navLabel": "Special Education",
+          "scoringFocus": "Special Education",
+          "baselineWeight": 12,
+          "importanceSeed": 12,
+          "spaceTypes": [
+            {
+              "id": "ES::early-childhood-special-education-studio",
+              "name": "Early childhood special education studio",
+              "scoreCode": "PS",
+              "required": true,
+              "baselineWeight": 12,
+              "importanceSeed": 12,
+              "minSurveys": 1,
+              "notes": "Assess 1 representative room. Include a 2nd room if conditions vary.",
+              "navFocusArea": "Special Education",
+              "scoringFocus": "Special Education",
+              "catalogSpaceTypeId": "ecse__early-childhood-special-education-studio",
+              "catalogSpaceTypeName": "Early Childhood Special Education studio"
+            },
+            {
+              "id": "ES::sped-flex-studio",
+              "name": "SPED Flex Studio",
+              "scoreCode": "SP",
+              "required": true,
+              "baselineWeight": 12,
+              "importanceSeed": 12,
+              "minSurveys": 1,
+              "notes": "Assess 1 representative room. Include a 2nd room if conditions vary.",
+              "navFocusArea": "Special Education",
+              "scoringFocus": "Special Education",
+              "catalogSpaceTypeId": "special-education__sped-flex-studio",
+              "catalogSpaceTypeName": "SPED Flex Studio"
+            },
+            {
+              "id": "ES::special-education-suite",
+              "name": "Special Education Suite",
+              "scoreCode": "SE",
+              "required": true,
+              "baselineWeight": 3,
+              "importanceSeed": 3,
+              "minSurveys": 1,
+              "navFocusArea": "Special Education",
+              "scoringFocus": "Special Education",
+              "catalogSpaceTypeId": "special-education__special-education-suite",
+              "catalogSpaceTypeName": "Special Education Suite"
+            },
+            {
+              "id": "ES::sensory-motor-lab",
+              "name": "Sensory Motor Lab",
+              "scoreCode": "SN",
+              "required": true,
+              "baselineWeight": 9,
+              "importanceSeed": 9,
+              "minSurveys": 1,
+              "navFocusArea": "Special Education",
+              "scoringFocus": "Special Education",
+              "catalogSpaceTypeId": "special-education__sensory-motor-lab",
+              "catalogSpaceTypeName": "Sensory Motor Lab"
+            },
+            {
+              "id": "ES::life-skills-studio",
+              "name": "Life Skills Studio",
+              "scoreCode": "LS",
+              "required": false,
+              "baselineWeight": 3,
+              "importanceSeed": 3,
+              "minSurveys": 0,
+              "navFocusArea": "Special Education",
+              "scoringFocus": "Special Education",
+              "catalogSpaceTypeId": "special-education__life-skills-studio",
+              "catalogSpaceTypeName": "Life Skills Studio"
+            }
+          ]
+        },
+        {
+          "name": "Neighborhoods",
+          "navLabel": "Neighborhoods",
+          "scoringFocus": "Neighborhoods",
+          "baselineWeight": 9,
+          "importanceSeed": 9,
+          "spaceTypes": [
+            {
+              "id": "ES::open-collaboration",
+              "name": "Open Collaboration",
+              "scoreCode": "OC",
+              "required": true,
+              "baselineWeight": 12,
+              "importanceSeed": 12,
+              "minSurveys": 3,
+              "notes": "Should be assessed per neighborhood",
+              "navFocusArea": "Neighborhoods",
+              "scoringFocus": "Neighborhoods",
+              "catalogSpaceTypeId": null,
+              "catalogSpaceTypeName": null
+            },
+            {
+              "id": "ES::small-group-room",
+              "name": "Small Group Room",
+              "scoreCode": "SG",
+              "required": true,
+              "baselineWeight": 9,
+              "importanceSeed": 9,
+              "minSurveys": 3,
+              "notes": "Should be assessed per neighborhood",
+              "navFocusArea": "Neighborhoods",
+              "scoringFocus": "Neighborhoods",
+              "catalogSpaceTypeId": null,
+              "catalogSpaceTypeName": null
+            },
+            {
+              "id": "ES::neighborhood",
+              "name": "Neighborhood",
+              "scoreCode": "NE",
+              "required": true,
+              "baselineWeight": 12,
+              "importanceSeed": 12,
+              "minSurveys": 3,
+              "notes": "The assessor should complete for each neighborhood",
+              "navFocusArea": "Neighborhoods",
+              "scoringFocus": "Neighborhoods",
+              "catalogSpaceTypeId": null,
+              "catalogSpaceTypeName": null
+            }
+          ]
+        },
+        {
+          "name": "Shared Spaces",
+          "navLabel": "Shared Spaces",
+          "scoringFocus": "Shared Spaces",
+          "baselineWeight": 9,
+          "importanceSeed": 9,
+          "spaceTypes": [
+            {
+              "id": "ES::gym",
+              "name": "Gym",
+              "scoreCode": "GY",
+              "required": true,
+              "baselineWeight": 12,
+              "importanceSeed": 12,
+              "minSurveys": 1,
+              "navFocusArea": "Shared Spaces",
+              "scoringFocus": "Shared Spaces",
+              "catalogSpaceTypeId": "athletics__competition-gym",
+              "catalogSpaceTypeName": "Competition Gym"
+            },
+            {
+              "id": "ES::library-media-center",
+              "name": "Library Media Center",
+              "scoreCode": "MC",
+              "required": true,
+              "baselineWeight": 12,
+              "importanceSeed": 12,
+              "minSurveys": 1,
+              "navFocusArea": "Shared Spaces",
+              "scoringFocus": "Shared Spaces",
+              "catalogSpaceTypeId": "library-media-center__library-media-center",
+              "catalogSpaceTypeName": "Library Media Center"
+            },
+            {
+              "id": "ES::food-service",
+              "name": "Food Service",
+              "scoreCode": "FS",
+              "required": true,
+              "baselineWeight": 12,
+              "importanceSeed": 12,
+              "minSurveys": 1,
+              "navFocusArea": "Shared Spaces",
+              "scoringFocus": "Shared Spaces",
+              "catalogSpaceTypeId": null,
+              "catalogSpaceTypeName": null
+            },
+            {
+              "id": "ES::empower-center",
+              "name": "Empower Center",
+              "scoreCode": "EC",
+              "required": false,
+              "baselineWeight": 3,
+              "importanceSeed": 3,
+              "minSurveys": 0,
+              "navFocusArea": "Shared Spaces",
+              "scoringFocus": "Shared Spaces",
+              "catalogSpaceTypeId": null,
+              "catalogSpaceTypeName": null
+            }
+          ]
+        },
+        {
+          "name": "Outdoor Elements",
+          "navLabel": "Outdoor Elements",
+          "scoringFocus": "Outdoor Elements",
+          "baselineWeight": 9,
+          "importanceSeed": 9,
+          "spaceTypes": [
+            {
+              "id": "ES::outdoor-spaces",
+              "name": "Outdoor Spaces",
+              "scoreCode": "OS",
+              "required": true,
+              "baselineWeight": 12,
+              "importanceSeed": 12,
+              "minSurveys": 1,
+              "navFocusArea": "Outdoor Elements",
+              "scoringFocus": "Outdoor Elements",
+              "catalogSpaceTypeId": "outdoor-spaces__outdoor-spaces",
+              "catalogSpaceTypeName": "Outdoor Spaces"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "MS",
+      "label": "Middle School",
+      "focusAreas": [
+        {
+          "name": "Arrival/Administration",
+          "navLabel": "Arrival/Administration",
+          "scoringFocus": "Arrival/Administration",
+          "baselineWeight": 6,
+          "importanceSeed": 6,
+          "spaceTypes": [
+            {
+              "id": "MS::main-entry-reception-main-admin-suite",
+              "name": "Main Entry/Reception/Main Admin Suite",
+              "scoreCode": "ME",
+              "required": true,
+              "baselineWeight": 12,
+              "importanceSeed": 12,
+              "minSurveys": 1,
+              "navFocusArea": "Arrival/Administration",
+              "scoringFocus": "Arrival/Administration",
+              "catalogSpaceTypeId": "admin-offices__main-admin-suite",
+              "catalogSpaceTypeName": "Main Admin Suite"
+            },
+            {
+              "id": "MS::community-partners-suite",
+              "name": "Community Partners Suite",
+              "scoreCode": "CP",
+              "required": true,
+              "baselineWeight": 6,
+              "importanceSeed": 6,
+              "minSurveys": 1,
+              "navFocusArea": "Arrival/Administration",
+              "scoringFocus": "Arrival/Administration",
+              "catalogSpaceTypeId": "community-partners-suite__community-partners-suite",
+              "catalogSpaceTypeName": "Community Partners Suite"
+            },
+            {
+              "id": "MS::admin-offices",
+              "name": "Admin Offices",
+              "scoreCode": "AD",
+              "required": true,
+              "baselineWeight": 9,
+              "importanceSeed": 9,
+              "minSurveys": 2,
+              "notes": "Assess 2 offices or 3 if there are varying conditions",
+              "navFocusArea": "Arrival/Administration",
+              "scoringFocus": "Arrival/Administration",
+              "catalogSpaceTypeId": "admin-offices__admin-offices",
+              "catalogSpaceTypeName": "Admin Offices"
+            },
+            {
+              "id": "MS::professional-learning-center",
+              "name": "Professional Learning Center",
+              "scoreCode": "PL",
+              "required": true,
+              "baselineWeight": 9,
+              "importanceSeed": 9,
+              "minSurveys": 6,
+              "notes": "Should be assessed per neighborhood",
+              "navFocusArea": "Arrival/Administration",
+              "scoringFocus": "Arrival/Administration",
+              "catalogSpaceTypeId": "plcs__professional-learning-center",
+              "catalogSpaceTypeName": "Professional Learning Center"
+            },
+            {
+              "id": "MS::mental-wellness-and-counseling-suite",
+              "name": "Mental Wellness and Counseling Suite",
+              "scoreCode": "CO",
+              "required": true,
+              "baselineWeight": 12,
+              "importanceSeed": 12,
+              "minSurveys": 1,
+              "navFocusArea": "Arrival/Administration",
+              "scoringFocus": "Arrival/Administration",
+              "catalogSpaceTypeId": "mw-and-counseling-suite__mental-wellness-and-counseling-suite",
+              "catalogSpaceTypeName": "Mental Wellness and Counseling Suite"
+            }
+          ]
+        },
+        {
+          "name": "Studios",
+          "navLabel": "Studios",
+          "scoringFocus": "Studios",
+          "baselineWeight": 12,
+          "importanceSeed": 12,
+          "spaceTypes": [
+            {
+              "id": "MS::traditional-studio",
+              "name": "Traditional Studio",
+              "scoreCode": "ST",
+              "required": true,
+              "baselineWeight": 12,
+              "importanceSeed": 12,
+              "minSurveys": 12,
+              "notes": "Two per neighborhood",
+              "navFocusArea": "Studios",
+              "scoringFocus": "Studios",
+              "catalogSpaceTypeId": "studios__traditional-studio",
+              "catalogSpaceTypeName": "Traditional Studio"
+            },
+            {
+              "id": "MS::science",
+              "name": "Science",
+              "scoreCode": "SC",
+              "required": true,
+              "baselineWeight": 12,
+              "importanceSeed": 12,
+              "minSurveys": 2,
+              "notes": "Assess representative rooms, more if conditions vary",
+              "navFocusArea": "Studios",
+              "scoringFocus": "Studios",
+              "catalogSpaceTypeId": "science__science",
+              "catalogSpaceTypeName": "Science"
+            },
+            {
+              "id": "MS::science-prep-room",
+              "name": "Science Prep Room",
+              "scoreCode": "SI",
+              "required": true,
+              "baselineWeight": 6,
+              "importanceSeed": 6,
+              "minSurveys": 2,
+              "notes": "Assess representative rooms, more if conditions vary",
+              "navFocusArea": "Studios",
+              "scoringFocus": "Studios",
+              "catalogSpaceTypeId": "science__science-prep-room",
+              "catalogSpaceTypeName": "Science Prep Room"
+            },
+            {
+              "id": "MS::music",
+              "name": "Music",
+              "scoreCode": "MU",
+              "required": false,
+              "baselineWeight": 6,
+              "importanceSeed": 6,
+              "minSurveys": 0,
+              "navFocusArea": "Studios",
+              "scoringFocus": "Studios",
+              "catalogSpaceTypeId": null,
+              "catalogSpaceTypeName": null
+            },
+            {
+              "id": "MS::maker-space",
+              "name": "Maker Space",
+              "scoreCode": "MS",
+              "required": true,
+              "baselineWeight": 12,
+              "importanceSeed": 12,
+              "minSurveys": 2,
+              "notes": "Assess representative rooms, more if conditions vary",
+              "navFocusArea": "Studios",
+              "scoringFocus": "Studios",
+              "catalogSpaceTypeId": "maker-space__maker-space",
+              "catalogSpaceTypeName": "Maker Space"
+            }
+          ]
+        },
+        {
+          "name": "Special Education",
+          "navLabel": "Special Education",
+          "scoringFocus": "Special Education",
+          "baselineWeight": 12,
+          "importanceSeed": 12,
+          "spaceTypes": [
+            {
+              "id": "MS::sped-flex-studio",
+              "name": "SPED Flex Studio",
+              "scoreCode": "SP",
+              "required": true,
+              "baselineWeight": 12,
+              "importanceSeed": 12,
+              "minSurveys": 2,
+              "notes": "1 represnetative room, 2 if conditions vary",
+              "navFocusArea": "Special Education",
+              "scoringFocus": "Special Education",
+              "catalogSpaceTypeId": "special-education__sped-flex-studio",
+              "catalogSpaceTypeName": "SPED Flex Studio"
+            },
+            {
+              "id": "MS::special-education-suite",
+              "name": "Special Education Suite",
+              "scoreCode": "SE",
+              "required": true,
+              "baselineWeight": 3,
+              "importanceSeed": 3,
+              "minSurveys": 1,
+              "navFocusArea": "Special Education",
+              "scoringFocus": "Special Education",
+              "catalogSpaceTypeId": "special-education__special-education-suite",
+              "catalogSpaceTypeName": "Special Education Suite"
+            },
+            {
+              "id": "MS::sensory-motor-lab",
+              "name": "Sensory Motor Lab",
+              "scoreCode": "SN",
+              "required": true,
+              "baselineWeight": 9,
+              "importanceSeed": 9,
+              "minSurveys": 1,
+              "notes": "Assess 1 representative room. Include a 2nd room if conditions vary.",
+              "navFocusArea": "Special Education",
+              "scoringFocus": "Special Education",
+              "catalogSpaceTypeId": "special-education__sensory-motor-lab",
+              "catalogSpaceTypeName": "Sensory Motor Lab"
+            },
+            {
+              "id": "MS::vocational-lab",
+              "name": "Vocational Lab",
+              "scoreCode": "VO",
+              "required": true,
+              "baselineWeight": 12,
+              "importanceSeed": 12,
+              "minSurveys": 1,
+              "navFocusArea": "Special Education",
+              "scoringFocus": "Special Education",
+              "catalogSpaceTypeId": "special-education__vocational-lab",
+              "catalogSpaceTypeName": "Vocational Lab"
+            },
+            {
+              "id": "MS::life-skills-studio",
+              "name": "Life Skills Studio",
+              "scoreCode": "LS",
+              "required": true,
+              "baselineWeight": 12,
+              "importanceSeed": 12,
+              "minSurveys": 1,
+              "navFocusArea": "Special Education",
+              "scoringFocus": "Special Education",
+              "catalogSpaceTypeId": "special-education__life-skills-studio",
+              "catalogSpaceTypeName": "Life Skills Studio"
+            }
+          ]
+        },
+        {
+          "name": "Visual Arts",
+          "navLabel": "Visual Arts",
+          "scoringFocus": "Studios",
+          "baselineWeight": 12,
+          "importanceSeed": 12,
+          "spaceTypes": [
+            {
+              "id": "MS::2d-art-studio",
+              "name": "2D Art Studio",
+              "scoreCode": "TW",
+              "required": true,
+              "baselineWeight": 12,
+              "importanceSeed": 12,
+              "minSurveys": 1,
+              "navFocusArea": "Visual Arts",
+              "scoringFocus": "Studios",
+              "catalogSpaceTypeId": null,
+              "catalogSpaceTypeName": null
+            },
+            {
+              "id": "MS::3d-art-studio",
+              "name": "3D Art Studio",
+              "scoreCode": "TH",
+              "required": true,
+              "baselineWeight": 12,
+              "importanceSeed": 12,
+              "minSurveys": 1,
+              "navFocusArea": "Visual Arts",
+              "scoringFocus": "Studios",
+              "catalogSpaceTypeId": null,
+              "catalogSpaceTypeName": null
+            },
+            {
+              "id": "MS::digital-art-studio",
+              "name": "Digital Art Studio",
+              "scoreCode": "DA",
+              "required": true,
+              "baselineWeight": 12,
+              "importanceSeed": 12,
+              "minSurveys": 1,
+              "navFocusArea": "Visual Arts",
+              "scoringFocus": "Studios",
+              "catalogSpaceTypeId": null,
+              "catalogSpaceTypeName": null
+            }
+          ]
+        },
+        {
+          "name": "CTE",
+          "navLabel": "CTE",
+          "scoringFocus": "CTE",
+          "baselineWeight": 9,
+          "importanceSeed": 9,
+          "spaceTypes": [
+            {
+              "id": "MS::cte",
+              "name": "CTE",
+              "scoreCode": "CT",
+              "required": true,
+              "baselineWeight": 12,
+              "importanceSeed": 12,
+              "minSurveys": 2,
+              "notes": "Assess representative rooms, more if conditions vary",
+              "navFocusArea": "CTE",
+              "scoringFocus": "CTE",
+              "catalogSpaceTypeId": null,
+              "catalogSpaceTypeName": null
+            }
+          ]
+        },
+        {
+          "name": "Performing Arts",
+          "navLabel": "Performing Arts",
+          "scoringFocus": "Performing Arts",
+          "baselineWeight": 9,
+          "importanceSeed": 9,
+          "spaceTypes": [
+            {
+              "id": "MS::theater-arts-studio",
+              "name": "Theater Arts Studio",
+              "scoreCode": "TA",
+              "required": true,
+              "baselineWeight": 12,
+              "importanceSeed": 12,
+              "minSurveys": 1,
+              "notes": "Asses 1",
+              "navFocusArea": "Performing Arts",
+              "scoringFocus": "Performing Arts",
+              "catalogSpaceTypeId": null,
+              "catalogSpaceTypeName": null
+            },
+            {
+              "id": "MS::rehearsal-hall",
+              "name": "Rehearsal Hall",
+              "scoreCode": "RH",
+              "required": true,
+              "baselineWeight": 12,
+              "importanceSeed": 12,
+              "minSurveys": 2,
+              "notes": "Assess representative rooms, more if conditions vary",
+              "navFocusArea": "Performing Arts",
+              "scoringFocus": "Performing Arts",
+              "catalogSpaceTypeId": null,
+              "catalogSpaceTypeName": null
+            },
+            {
+              "id": "MS::music-suite",
+              "name": "Music Suite",
+              "scoreCode": "MT",
+              "required": true,
+              "baselineWeight": 13,
+              "importanceSeed": 12,
+              "minSurveys": 1,
+              "navFocusArea": "Performing Arts",
+              "scoringFocus": "Performing Arts",
+              "catalogSpaceTypeId": null,
+              "catalogSpaceTypeName": null
+            },
+            {
+              "id": "MS::black-box",
+              "name": "Black Box",
+              "scoreCode": "BB",
+              "required": false,
+              "baselineWeight": 3,
+              "importanceSeed": 3,
+              "minSurveys": 0,
+              "navFocusArea": "Performing Arts",
+              "scoringFocus": "Performing Arts",
+              "catalogSpaceTypeId": null,
+              "catalogSpaceTypeName": null
+            },
+            {
+              "id": "MS::auditorium",
+              "name": "Auditorium",
+              "scoreCode": "AU",
+              "required": false,
+              "baselineWeight": 3,
+              "importanceSeed": 3,
+              "minSurveys": 0,
+              "navFocusArea": "Performing Arts",
+              "scoringFocus": "Performing Arts",
+              "catalogSpaceTypeId": null,
+              "catalogSpaceTypeName": null
+            },
+            {
+              "id": "MS::dance",
+              "name": "Dance",
+              "scoreCode": "DN",
+              "required": false,
+              "baselineWeight": 3,
+              "importanceSeed": 3,
+              "minSurveys": 0,
+              "navFocusArea": "Performing Arts",
+              "scoringFocus": "Performing Arts",
+              "catalogSpaceTypeId": null,
+              "catalogSpaceTypeName": null
+            }
+          ]
+        },
+        {
+          "name": "Neighborhoods",
+          "navLabel": "Neighborhoods",
+          "scoringFocus": "Neighborhoods",
+          "baselineWeight": 9,
+          "importanceSeed": 9,
+          "spaceTypes": [
+            {
+              "id": "MS::open-collaboration",
+              "name": "Open Collaboration",
+              "scoreCode": "OC",
+              "required": true,
+              "baselineWeight": 12,
+              "importanceSeed": 12,
+              "minSurveys": 6,
+              "notes": "Should be assessed per neighborhood",
+              "navFocusArea": "Neighborhoods",
+              "scoringFocus": "Neighborhoods",
+              "catalogSpaceTypeId": null,
+              "catalogSpaceTypeName": null
+            },
+            {
+              "id": "MS::small-group-room",
+              "name": "Small Group Room",
+              "scoreCode": "SG",
+              "required": true,
+              "baselineWeight": 9,
+              "importanceSeed": 9,
+              "minSurveys": 6,
+              "notes": "Should be assessed per neighborhood",
+              "navFocusArea": "Neighborhoods",
+              "scoringFocus": "Neighborhoods",
+              "catalogSpaceTypeId": null,
+              "catalogSpaceTypeName": null
+            },
+            {
+              "id": "MS::large-group-room",
+              "name": "Large Group Room",
+              "scoreCode": "LG",
+              "required": false,
+              "baselineWeight": 3,
+              "importanceSeed": 3,
+              "minSurveys": 0,
+              "notes": "Should be assessed per neighborhood",
+              "navFocusArea": "Neighborhoods",
+              "scoringFocus": "Neighborhoods",
+              "catalogSpaceTypeId": null,
+              "catalogSpaceTypeName": null
+            },
+            {
+              "id": "MS::neighborhood",
+              "name": "Neighborhood",
+              "scoreCode": "NE",
+              "required": true,
+              "baselineWeight": 12,
+              "importanceSeed": 12,
+              "minSurveys": 6,
+              "notes": "Should be assessed per neighborhood",
+              "navFocusArea": "Neighborhoods",
+              "scoringFocus": "Neighborhoods",
+              "catalogSpaceTypeId": null,
+              "catalogSpaceTypeName": null
+            }
+          ]
+        },
+        {
+          "name": "Athletics and Wellness",
+          "navLabel": "Athletics and Wellness",
+          "scoringFocus": "Athletics and Wellness",
+          "baselineWeight": 9,
+          "importanceSeed": 9,
+          "spaceTypes": [
+            {
+              "id": "MS::multipurpose-gym",
+              "name": "Multi-Purpose Gym",
+              "scoreCode": "MG",
+              "required": true,
+              "baselineWeight": 12,
+              "importanceSeed": 12,
+              "minSurveys": 1,
+              "navFocusArea": "Athletics and Wellness",
+              "scoringFocus": "Athletics and Wellness",
+              "catalogSpaceTypeId": "athletics__multipurpose-gym",
+              "catalogSpaceTypeName": "Multipurpose Gym"
+            },
+            {
+              "id": "MS::practice-gym",
+              "name": "Practice Gym",
+              "scoreCode": "PG",
+              "required": true,
+              "baselineWeight": 3,
+              "importanceSeed": 3,
+              "minSurveys": 1,
+              "navFocusArea": "Athletics and Wellness",
+              "scoringFocus": "Athletics and Wellness",
+              "catalogSpaceTypeId": "athletics__practice-gym",
+              "catalogSpaceTypeName": "Practice Gym"
+            },
+            {
+              "id": "MS::locker-room",
+              "name": "Locker Room",
+              "scoreCode": "LR",
+              "required": true,
+              "baselineWeight": 9,
+              "importanceSeed": 9,
+              "minSurveys": 1,
+              "navFocusArea": "Athletics and Wellness",
+              "scoringFocus": "Athletics and Wellness",
+              "catalogSpaceTypeId": "athletics__locker-rooms",
+              "catalogSpaceTypeName": "Locker rooms"
+            },
+            {
+              "id": "MS::weight-room",
+              "name": "Weight Room",
+              "scoreCode": "WE",
+              "required": true,
+              "baselineWeight": 9,
+              "importanceSeed": 9,
+              "minSurveys": 1,
+              "navFocusArea": "Athletics and Wellness",
+              "scoringFocus": "Athletics and Wellness",
+              "catalogSpaceTypeId": "athletics__weight-room",
+              "catalogSpaceTypeName": "Weight Room"
+            },
+            {
+              "id": "MS::wrestling",
+              "name": "Wrestling",
+              "scoreCode": "WR",
+              "required": false,
+              "baselineWeight": 3,
+              "importanceSeed": 3,
+              "minSurveys": 0,
+              "navFocusArea": "Athletics and Wellness",
+              "scoringFocus": "Athletics and Wellness",
+              "catalogSpaceTypeId": "athletics__wrestling",
+              "catalogSpaceTypeName": "Wrestling"
+            },
+            {
+              "id": "MS::pe-fitness-room",
+              "name": "PE Fitness Room",
+              "scoreCode": "PF",
+              "required": false,
+              "baselineWeight": 4,
+              "importanceSeed": 3,
+              "minSurveys": 0,
+              "navFocusArea": "Athletics and Wellness",
+              "scoringFocus": "Athletics and Wellness",
+              "catalogSpaceTypeId": "athletics__pe-fitness-room",
+              "catalogSpaceTypeName": "PE Fitness Room"
+            },
+            {
+              "id": "MS::athletics-wing",
+              "name": "Athletics Wing",
+              "scoreCode": "AT",
+              "required": false,
+              "baselineWeight": 6,
+              "importanceSeed": 6,
+              "minSurveys": 0,
+              "navFocusArea": "Athletics and Wellness",
+              "scoringFocus": "Athletics and Wellness",
+              "catalogSpaceTypeId": "athletics__athletics-wing",
+              "catalogSpaceTypeName": "Athletics Wing"
+            }
+          ]
+        },
+        {
+          "name": "Shared Spaces",
+          "navLabel": "Shared Spaces",
+          "scoringFocus": "Shared Spaces",
+          "baselineWeight": 9,
+          "importanceSeed": 9,
+          "spaceTypes": [
+            {
+              "id": "MS::library-media-center",
+              "name": "Library Media Center",
+              "scoreCode": "MC",
+              "required": true,
+              "baselineWeight": 12,
+              "importanceSeed": 12,
+              "minSurveys": 1,
+              "navFocusArea": "Shared Spaces",
+              "scoringFocus": "Shared Spaces",
+              "catalogSpaceTypeId": "library-media-center__library-media-center",
+              "catalogSpaceTypeName": "Library Media Center"
+            },
+            {
+              "id": "MS::food-service",
+              "name": "Food Service",
+              "scoreCode": "FS",
+              "required": true,
+              "baselineWeight": 12,
+              "importanceSeed": 12,
+              "minSurveys": 1,
+              "navFocusArea": "Shared Spaces",
+              "scoringFocus": "Shared Spaces",
+              "catalogSpaceTypeId": null,
+              "catalogSpaceTypeName": null
+            },
+            {
+              "id": "MS::empower-center",
+              "name": "Empower Center",
+              "scoreCode": "EC",
+              "required": true,
+              "baselineWeight": 9,
+              "importanceSeed": 9,
+              "minSurveys": 1,
+              "navFocusArea": "Shared Spaces",
+              "scoringFocus": "Shared Spaces",
+              "catalogSpaceTypeId": null,
+              "catalogSpaceTypeName": null
+            }
+          ]
+        },
+        {
+          "name": "Outdoor Elements",
+          "navLabel": "Outdoor Elements",
+          "scoringFocus": "Outdoor Elements",
+          "baselineWeight": 9,
+          "importanceSeed": 9,
+          "spaceTypes": [
+            {
+              "id": "MS::outdoor-spaces",
+              "name": "Outdoor Spaces",
+              "scoreCode": "OS",
+              "required": true,
+              "baselineWeight": 12,
+              "importanceSeed": 12,
+              "minSurveys": 1,
+              "navFocusArea": "Outdoor Elements",
+              "scoringFocus": "Outdoor Elements",
+              "catalogSpaceTypeId": "outdoor-spaces__outdoor-spaces",
+              "catalogSpaceTypeName": "Outdoor Spaces"
+            },
+            {
+              "id": "MS::outdoor-athletics",
+              "name": "Outdoor Athletics",
+              "scoreCode": "OA",
+              "required": true,
+              "baselineWeight": 12,
+              "importanceSeed": 12,
+              "minSurveys": 1,
+              "navFocusArea": "Outdoor Elements",
+              "scoringFocus": "Athletics and Wellness",
+              "catalogSpaceTypeId": "athletics__outdoor-athletics",
+              "catalogSpaceTypeName": "Outdoor Athletics"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "HS",
+      "label": "High School",
+      "focusAreas": [
+        {
+          "name": "Arrival/Administration",
+          "navLabel": "Arrival/Administration",
+          "scoringFocus": "Arrival/Administration",
+          "baselineWeight": 6,
+          "importanceSeed": 6,
+          "spaceTypes": [
+            {
+              "id": "HS::main-entry-reception-main-admin-suite",
+              "name": "Main Entry/Reception/Main Admin Suite",
+              "scoreCode": "ME",
+              "required": true,
+              "baselineWeight": 12,
+              "importanceSeed": 12,
+              "minSurveys": 1,
+              "navFocusArea": "Arrival/Administration",
+              "scoringFocus": "Arrival/Administration",
+              "catalogSpaceTypeId": "admin-offices__main-admin-suite",
+              "catalogSpaceTypeName": "Main Admin Suite"
+            },
+            {
+              "id": "HS::community-partners-suite",
+              "name": "Community Partners Suite",
+              "scoreCode": "CP",
+              "required": true,
+              "baselineWeight": 6,
+              "importanceSeed": 6,
+              "minSurveys": 1,
+              "navFocusArea": "Arrival/Administration",
+              "scoringFocus": "Arrival/Administration",
+              "catalogSpaceTypeId": "community-partners-suite__community-partners-suite",
+              "catalogSpaceTypeName": "Community Partners Suite"
+            },
+            {
+              "id": "HS::admin-offices",
+              "name": "Admin Offices",
+              "scoreCode": "AD",
+              "required": true,
+              "baselineWeight": 9,
+              "importanceSeed": 9,
+              "minSurveys": 4,
+              "notes": "Assess 2 offices or 3 if there are varying conditions",
+              "navFocusArea": "Arrival/Administration",
+              "scoringFocus": "Arrival/Administration",
+              "catalogSpaceTypeId": "admin-offices__admin-offices",
+              "catalogSpaceTypeName": "Admin Offices"
+            },
+            {
+              "id": "HS::professional-learning-center",
+              "name": "Professional Learning Center",
+              "scoreCode": "PL",
+              "required": true,
+              "baselineWeight": 9,
+              "importanceSeed": 9,
+              "minSurveys": 8,
+              "notes": "Per neighborhood",
+              "navFocusArea": "Arrival/Administration",
+              "scoringFocus": "Arrival/Administration",
+              "catalogSpaceTypeId": "plcs__professional-learning-center",
+              "catalogSpaceTypeName": "Professional Learning Center"
+            },
+            {
+              "id": "HS::mental-wellness-and-counseling-suite",
+              "name": "Mental Wellness and Counseling Suite",
+              "scoreCode": "CO",
+              "required": true,
+              "baselineWeight": 12,
+              "importanceSeed": 12,
+              "minSurveys": 1,
+              "navFocusArea": "Arrival/Administration",
+              "scoringFocus": "Arrival/Administration",
+              "catalogSpaceTypeId": "mw-and-counseling-suite__mental-wellness-and-counseling-suite",
+              "catalogSpaceTypeName": "Mental Wellness and Counseling Suite"
+            }
+          ]
+        },
+        {
+          "name": "Studios",
+          "navLabel": "Studios",
+          "scoringFocus": "Studios",
+          "baselineWeight": 12,
+          "importanceSeed": 12,
+          "spaceTypes": [
+            {
+              "id": "HS::traditional-studio",
+              "name": "Traditional Studio",
+              "scoreCode": "ST",
+              "required": true,
+              "baselineWeight": 12,
+              "importanceSeed": 12,
+              "minSurveys": 16,
+              "notes": "Two per neighborhood based on medium sized school",
+              "navFocusArea": "Studios",
+              "scoringFocus": "Studios",
+              "catalogSpaceTypeId": "studios__traditional-studio",
+              "catalogSpaceTypeName": "Traditional Studio"
+            },
+            {
+              "id": "HS::science",
+              "name": "Science",
+              "scoreCode": "SC",
+              "required": true,
+              "baselineWeight": 12,
+              "importanceSeed": 12,
+              "minSurveys": 8,
+              "notes": "Assess representative rooms, more if conditions vary",
+              "navFocusArea": "Studios",
+              "scoringFocus": "Studios",
+              "catalogSpaceTypeId": "science__science",
+              "catalogSpaceTypeName": "Science"
+            },
+            {
+              "id": "HS::science-prep-room",
+              "name": "Science Prep Room",
+              "scoreCode": "SI",
+              "required": true,
+              "baselineWeight": 12,
+              "importanceSeed": 12,
+              "minSurveys": 8,
+              "notes": "Assess representative rooms, more if conditions vary",
+              "navFocusArea": "Studios",
+              "scoringFocus": "Studios",
+              "catalogSpaceTypeId": "science__science-prep-room",
+              "catalogSpaceTypeName": "Science Prep Room"
+            },
+            {
+              "id": "HS::maker-space",
+              "name": "Maker Space",
+              "scoreCode": "MS",
+              "required": true,
+              "baselineWeight": 12,
+              "importanceSeed": 12,
+              "minSurveys": 2,
+              "notes": "Assess representative rooms, more if conditions vary",
+              "navFocusArea": "Studios",
+              "scoringFocus": "Studios",
+              "catalogSpaceTypeId": "maker-space__maker-space",
+              "catalogSpaceTypeName": "Maker Space"
+            }
+          ]
+        },
+        {
+          "name": "Special Education",
+          "navLabel": "Special Education",
+          "scoringFocus": "Special Education",
+          "baselineWeight": 12,
+          "importanceSeed": 12,
+          "spaceTypes": [
+            {
+              "id": "HS::sped-flex-studio",
+              "name": "SPED Flex Studio",
+              "scoreCode": "SP",
+              "required": true,
+              "baselineWeight": 12,
+              "importanceSeed": 12,
+              "minSurveys": 2,
+              "navFocusArea": "Special Education",
+              "scoringFocus": "Special Education",
+              "catalogSpaceTypeId": "special-education__sped-flex-studio",
+              "catalogSpaceTypeName": "SPED Flex Studio"
+            },
+            {
+              "id": "HS::special-education-suite",
+              "name": "Special Education Suite",
+              "scoreCode": "SE",
+              "required": true,
+              "baselineWeight": 3,
+              "importanceSeed": 3,
+              "minSurveys": 1,
+              "navFocusArea": "Special Education",
+              "scoringFocus": "Special Education",
+              "catalogSpaceTypeId": "special-education__special-education-suite",
+              "catalogSpaceTypeName": "Special Education Suite"
+            },
+            {
+              "id": "HS::sensory-motor-lab",
+              "name": "Sensory Motor Lab",
+              "scoreCode": "SN",
+              "required": true,
+              "baselineWeight": 9,
+              "importanceSeed": 9,
+              "minSurveys": 1,
+              "navFocusArea": "Special Education",
+              "scoringFocus": "Special Education",
+              "catalogSpaceTypeId": "special-education__sensory-motor-lab",
+              "catalogSpaceTypeName": "Sensory Motor Lab"
+            },
+            {
+              "id": "HS::vocational-lab",
+              "name": "Vocational Lab",
+              "scoreCode": "VO",
+              "required": true,
+              "baselineWeight": 12,
+              "importanceSeed": 12,
+              "minSurveys": 1,
+              "navFocusArea": "Special Education",
+              "scoringFocus": "Special Education",
+              "catalogSpaceTypeId": "special-education__vocational-lab",
+              "catalogSpaceTypeName": "Vocational Lab"
+            },
+            {
+              "id": "HS::life-skills-studio",
+              "name": "Life Skills Studio",
+              "scoreCode": "LS",
+              "required": true,
+              "baselineWeight": 12,
+              "importanceSeed": 12,
+              "minSurveys": 1,
+              "navFocusArea": "Special Education",
+              "scoringFocus": "Special Education",
+              "catalogSpaceTypeId": "special-education__life-skills-studio",
+              "catalogSpaceTypeName": "Life Skills Studio"
+            }
+          ]
+        },
+        {
+          "name": "Visual Arts",
+          "navLabel": "Visual Arts",
+          "scoringFocus": "Studios",
+          "baselineWeight": 12,
+          "importanceSeed": 12,
+          "spaceTypes": [
+            {
+              "id": "HS::2d-art-studio",
+              "name": "2D Art Studio",
+              "scoreCode": "TW",
+              "required": true,
+              "baselineWeight": 12,
+              "importanceSeed": 12,
+              "minSurveys": 1,
+              "navFocusArea": "Visual Arts",
+              "scoringFocus": "Studios",
+              "catalogSpaceTypeId": null,
+              "catalogSpaceTypeName": null
+            },
+            {
+              "id": "HS::3d-art-studio",
+              "name": "3D Art Studio",
+              "scoreCode": "TH",
+              "required": true,
+              "baselineWeight": 13,
+              "importanceSeed": 12,
+              "minSurveys": 1,
+              "navFocusArea": "Visual Arts",
+              "scoringFocus": "Studios",
+              "catalogSpaceTypeId": null,
+              "catalogSpaceTypeName": null
+            },
+            {
+              "id": "HS::digital-art-studio",
+              "name": "Digital Art Studio",
+              "scoreCode": "DA",
+              "required": true,
+              "baselineWeight": 14,
+              "importanceSeed": 12,
+              "minSurveys": 1,
+              "navFocusArea": "Visual Arts",
+              "scoringFocus": "Studios",
+              "catalogSpaceTypeId": null,
+              "catalogSpaceTypeName": null
+            }
+          ]
+        },
+        {
+          "name": "CTE",
+          "navLabel": "CTE",
+          "scoringFocus": "CTE",
+          "baselineWeight": 9,
+          "importanceSeed": 9,
+          "spaceTypes": [
+            {
+              "id": "HS::cte",
+              "name": "CTE",
+              "scoreCode": "CT",
+              "required": true,
+              "baselineWeight": 12,
+              "importanceSeed": 12,
+              "minSurveys": 4,
+              "notes": "Assess representative rooms, more if conditions vary",
+              "navFocusArea": "CTE",
+              "scoringFocus": "CTE",
+              "catalogSpaceTypeId": null,
+              "catalogSpaceTypeName": null
+            }
+          ]
+        },
+        {
+          "name": "Performing Arts",
+          "navLabel": "Performing Arts",
+          "scoringFocus": "Performing Arts",
+          "baselineWeight": 9,
+          "importanceSeed": 9,
+          "spaceTypes": [
+            {
+              "id": "HS::rehearsal-hall",
+              "name": "Rehearsal Hall",
+              "scoreCode": "RH",
+              "required": true,
+              "baselineWeight": 12,
+              "importanceSeed": 12,
+              "minSurveys": 2,
+              "notes": "Assess representative rooms, more if conditions vary",
+              "navFocusArea": "Performing Arts",
+              "scoringFocus": "Performing Arts",
+              "catalogSpaceTypeId": null,
+              "catalogSpaceTypeName": null
+            },
+            {
+              "id": "HS::music-suite",
+              "name": "Music Suite",
+              "scoreCode": "MT",
+              "required": true,
+              "baselineWeight": 13,
+              "importanceSeed": 12,
+              "minSurveys": 1,
+              "navFocusArea": "Performing Arts",
+              "scoringFocus": "Performing Arts",
+              "catalogSpaceTypeId": null,
+              "catalogSpaceTypeName": null
+            },
+            {
+              "id": "HS::theater-arts-studio",
+              "name": "Theater Arts Studio",
+              "scoreCode": "TA",
+              "required": true,
+              "baselineWeight": 12,
+              "importanceSeed": 12,
+              "minSurveys": 1,
+              "notes": "Assess 1 representative room. Include a 2nd room if conditions vary.",
+              "navFocusArea": "Performing Arts",
+              "scoringFocus": "Performing Arts",
+              "catalogSpaceTypeId": null,
+              "catalogSpaceTypeName": null
+            },
+            {
+              "id": "HS::black-box",
+              "name": "Black Box",
+              "scoreCode": "BB",
+              "required": true,
+              "baselineWeight": 3,
+              "importanceSeed": 3,
+              "minSurveys": 1,
+              "navFocusArea": "Performing Arts",
+              "scoringFocus": "Performing Arts",
+              "catalogSpaceTypeId": null,
+              "catalogSpaceTypeName": null
+            },
+            {
+              "id": "HS::auditorium",
+              "name": "Auditorium",
+              "scoreCode": "AU",
+              "required": true,
+              "baselineWeight": 3,
+              "importanceSeed": 3,
+              "minSurveys": 1,
+              "navFocusArea": "Performing Arts",
+              "scoringFocus": "Performing Arts",
+              "catalogSpaceTypeId": null,
+              "catalogSpaceTypeName": null
+            },
+            {
+              "id": "HS::dance",
+              "name": "Dance",
+              "scoreCode": "DA",
+              "required": true,
+              "baselineWeight": 3,
+              "importanceSeed": 3,
+              "minSurveys": 1,
+              "navFocusArea": "Performing Arts",
+              "scoringFocus": "Performing Arts",
+              "catalogSpaceTypeId": null,
+              "catalogSpaceTypeName": null
+            },
+            {
+              "id": "HS::theater-arts-suite",
+              "name": "Theater Arts Suite",
+              "scoreCode": "TS",
+              "required": true,
+              "baselineWeight": 4,
+              "importanceSeed": 3,
+              "minSurveys": 2,
+              "navFocusArea": "Performing Arts",
+              "scoringFocus": "Performing Arts",
+              "catalogSpaceTypeId": null,
+              "catalogSpaceTypeName": null
+            }
+          ]
+        },
+        {
+          "name": "Neighborhoods",
+          "navLabel": "Neighborhoods",
+          "scoringFocus": "Neighborhoods",
+          "baselineWeight": 9,
+          "importanceSeed": 9,
+          "spaceTypes": [
+            {
+              "id": "HS::open-collaboration",
+              "name": "Open Collaboration",
+              "scoreCode": "OC",
+              "required": true,
+              "baselineWeight": 12,
+              "importanceSeed": 12,
+              "minSurveys": 8,
+              "notes": "Should be assessed per neighborhood",
+              "navFocusArea": "Neighborhoods",
+              "scoringFocus": "Neighborhoods",
+              "catalogSpaceTypeId": null,
+              "catalogSpaceTypeName": null
+            },
+            {
+              "id": "HS::small-group-room",
+              "name": "Small Group Room",
+              "scoreCode": "SG",
+              "required": true,
+              "baselineWeight": 9,
+              "importanceSeed": 9,
+              "minSurveys": 8,
+              "notes": "Should be assessed per neighborhood",
+              "navFocusArea": "Neighborhoods",
+              "scoringFocus": "Neighborhoods",
+              "catalogSpaceTypeId": null,
+              "catalogSpaceTypeName": null
+            },
+            {
+              "id": "HS::large-group-room",
+              "name": "Large Group Room",
+              "scoreCode": "LG",
+              "required": true,
+              "baselineWeight": 9,
+              "importanceSeed": 9,
+              "minSurveys": 8,
+              "notes": "Should be assessed per neighborhood",
+              "navFocusArea": "Neighborhoods",
+              "scoringFocus": "Neighborhoods",
+              "catalogSpaceTypeId": null,
+              "catalogSpaceTypeName": null
+            },
+            {
+              "id": "HS::neighborhood",
+              "name": "Neighborhood",
+              "scoreCode": "MG",
+              "required": true,
+              "baselineWeight": 12,
+              "importanceSeed": 12,
+              "minSurveys": 8,
+              "notes": "Should be assessed per neighborhood",
+              "navFocusArea": "Neighborhoods",
+              "scoringFocus": "Neighborhoods",
+              "catalogSpaceTypeId": null,
+              "catalogSpaceTypeName": null
+            }
+          ]
+        },
+        {
+          "name": "Athletics and Wellness",
+          "navLabel": "Athletics and Wellness",
+          "scoringFocus": "Athletics and Wellness",
+          "baselineWeight": 9,
+          "importanceSeed": 9,
+          "spaceTypes": [
+            {
+              "id": "HS::multipurpose-gym",
+              "name": "Multi-Purpose Gym",
+              "scoreCode": "MG",
+              "required": true,
+              "baselineWeight": 12,
+              "importanceSeed": 12,
+              "minSurveys": 1,
+              "navFocusArea": "Athletics and Wellness",
+              "scoringFocus": "Athletics and Wellness",
+              "catalogSpaceTypeId": "athletics__multipurpose-gym",
+              "catalogSpaceTypeName": "Multipurpose Gym"
+            },
+            {
+              "id": "HS::competition-gym",
+              "name": "Competition Gym",
+              "scoreCode": "CG",
+              "required": true,
+              "baselineWeight": 9,
+              "importanceSeed": 9,
+              "minSurveys": 1,
+              "navFocusArea": "Athletics and Wellness",
+              "scoringFocus": "Athletics and Wellness",
+              "catalogSpaceTypeId": "athletics__competition-gym",
+              "catalogSpaceTypeName": "Competition Gym"
+            },
+            {
+              "id": "HS::locker-room",
+              "name": "Locker Room",
+              "scoreCode": "LR",
+              "required": true,
+              "baselineWeight": 9,
+              "importanceSeed": 9,
+              "minSurveys": 1,
+              "navFocusArea": "Athletics and Wellness",
+              "scoringFocus": "Athletics and Wellness",
+              "catalogSpaceTypeId": "athletics__locker-rooms",
+              "catalogSpaceTypeName": "Locker rooms"
+            },
+            {
+              "id": "HS::weight-room",
+              "name": "Weight Room",
+              "scoreCode": "WE",
+              "required": true,
+              "baselineWeight": 9,
+              "importanceSeed": 9,
+              "minSurveys": 1,
+              "navFocusArea": "Athletics and Wellness",
+              "scoringFocus": "Athletics and Wellness",
+              "catalogSpaceTypeId": "athletics__weight-room",
+              "catalogSpaceTypeName": "Weight Room"
+            },
+            {
+              "id": "HS::wrestling",
+              "name": "Wrestling",
+              "scoreCode": "WR",
+              "required": true,
+              "baselineWeight": 6,
+              "importanceSeed": 6,
+              "minSurveys": 1,
+              "navFocusArea": "Athletics and Wellness",
+              "scoringFocus": "Athletics and Wellness",
+              "catalogSpaceTypeId": "athletics__wrestling",
+              "catalogSpaceTypeName": "Wrestling"
+            },
+            {
+              "id": "HS::pe-fitness-room",
+              "name": "PE Fitness Room",
+              "scoreCode": "PF",
+              "required": true,
+              "baselineWeight": 7,
+              "importanceSeed": 6,
+              "minSurveys": 2,
+              "navFocusArea": "Athletics and Wellness",
+              "scoringFocus": "Athletics and Wellness",
+              "catalogSpaceTypeId": "athletics__pe-fitness-room",
+              "catalogSpaceTypeName": "PE Fitness Room"
+            },
+            {
+              "id": "HS::athletics-wing",
+              "name": "Athletics Wing",
+              "scoreCode": "AT",
+              "required": true,
+              "baselineWeight": 6,
+              "importanceSeed": 6,
+              "minSurveys": 1,
+              "navFocusArea": "Athletics and Wellness",
+              "scoringFocus": "Athletics and Wellness",
+              "catalogSpaceTypeId": "athletics__athletics-wing",
+              "catalogSpaceTypeName": "Athletics Wing"
+            }
+          ]
+        },
+        {
+          "name": "Shared Spaces",
+          "navLabel": "Shared Spaces",
+          "scoringFocus": "Shared Spaces",
+          "baselineWeight": 9,
+          "importanceSeed": 9,
+          "spaceTypes": [
+            {
+              "id": "HS::library-media-center",
+              "name": "Library Media Center",
+              "scoreCode": "MC",
+              "required": true,
+              "baselineWeight": 12,
+              "importanceSeed": 12,
+              "minSurveys": 1,
+              "navFocusArea": "Shared Spaces",
+              "scoringFocus": "Shared Spaces",
+              "catalogSpaceTypeId": "library-media-center__library-media-center",
+              "catalogSpaceTypeName": "Library Media Center"
+            },
+            {
+              "id": "HS::food-service",
+              "name": "Food Service",
+              "scoreCode": "FS",
+              "required": true,
+              "baselineWeight": 12,
+              "importanceSeed": 12,
+              "minSurveys": 1,
+              "navFocusArea": "Shared Spaces",
+              "scoringFocus": "Shared Spaces",
+              "catalogSpaceTypeId": null,
+              "catalogSpaceTypeName": null
+            },
+            {
+              "id": "HS::empower-center",
+              "name": "Empower Center",
+              "scoreCode": "EC",
+              "required": true,
+              "baselineWeight": 9,
+              "importanceSeed": 9,
+              "minSurveys": 1,
+              "navFocusArea": "Shared Spaces",
+              "scoringFocus": "Shared Spaces",
+              "catalogSpaceTypeId": null,
+              "catalogSpaceTypeName": null
+            }
+          ]
+        },
+        {
+          "name": "Outdoor",
+          "navLabel": "Outdoor",
+          "scoringFocus": "Outdoor Elements",
+          "baselineWeight": 9,
+          "importanceSeed": 9,
+          "spaceTypes": [
+            {
+              "id": "HS::outdoor-spaces",
+              "name": "Outdoor Spaces",
+              "scoreCode": "OS",
+              "required": true,
+              "baselineWeight": 12,
+              "importanceSeed": 12,
+              "minSurveys": 1,
+              "navFocusArea": "Outdoor",
+              "scoringFocus": "Outdoor Elements",
+              "catalogSpaceTypeId": "outdoor-spaces__outdoor-spaces",
+              "catalogSpaceTypeName": "Outdoor Spaces"
+            },
+            {
+              "id": "HS::outdoor-athletics",
+              "name": "Outdoor Athletics",
+              "scoreCode": "OA",
+              "required": true,
+              "baselineWeight": 12,
+              "importanceSeed": 12,
+              "minSurveys": 1,
+              "navFocusArea": "Outdoor",
+              "scoringFocus": "Athletics and Wellness",
+              "catalogSpaceTypeId": "athletics__outdoor-athletics",
+              "catalogSpaceTypeName": "Outdoor Athletics"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
