@@ -1,0 +1,7 @@
+{
+  "functions": {
+    "api/submit-weighting.js": {
+      "maxDuration": 30
+    }
+  }
+}

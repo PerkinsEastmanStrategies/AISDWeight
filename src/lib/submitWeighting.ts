@@ -3,7 +3,6 @@ import type {
   HierarchySchoolLevel,
   RollupSuggestion,
 } from "./hierarchyTypes";
-import { getSupabase } from "./supabaseClient";
 import { findSpaceType } from "./weighting";
 
 export type WeightLayer = "focus_area" | "space_type" | "category" | "subcategory";
@@ -96,34 +95,26 @@ export async function submitWeightingToSupabase(
   payload: CompanySuggestionsV3,
   level: HierarchySchoolLevel,
 ): Promise<{ id: string; itemCount: number }> {
-  const supabase = getSupabase();
   const items = flattenWeightingItems(payload, level);
-
-  const { data, error } = await supabase
-    .from("weighting_submissions")
-    .insert({
+  const res = await fetch("/api/submit-weighting", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
       company: payload.company,
       contact: payload.contact ?? null,
       school_level: payload.schoolLevel,
       hierarchy_generated_at: payload.hierarchyGeneratedAt ?? null,
-      payload_version: 3,
       raw_payload: payload,
-    })
-    .select("id")
-    .single();
-
-  if (error || !data?.id) {
-    throw new Error(error?.message || "Could not save the submission to Supabase.");
+      items,
+    }),
+  });
+  const data = (await res.json().catch(() => ({}))) as {
+    id?: string;
+    itemCount?: number;
+    error?: string;
+  };
+  if (!res.ok || !data.id) {
+    throw new Error(data.error || `Could not save to Supabase (${res.status}).`);
   }
-
-  if (items.length > 0) {
-    const { error: itemsError } = await supabase.from("weighting_items").insert(
-      items.map((item) => ({ ...item, submission_id: data.id })),
-    );
-    if (itemsError) {
-      throw new Error(itemsError.message || "Saved the submission header, but items failed to insert.");
-    }
-  }
-
-  return { id: data.id, itemCount: items.length };
+  return { id: data.id, itemCount: data.itemCount ?? items.length };
 }

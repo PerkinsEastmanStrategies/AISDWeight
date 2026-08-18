@@ -238,7 +238,7 @@ export function WeightingPage() {
     );
     if (remaining > 0) {
       const ok = confirm(
-        `You still have ${remaining} unreviewed item(s). Submit this session to the database anyway?`,
+        `You still have ${remaining} unreviewed item(s). Save this session to Supabase anyway?`,
       );
       if (!ok) return;
     }
@@ -251,12 +251,12 @@ export function WeightingPage() {
       setSession((s) => ({ ...s, submittedAt }));
       setSubmitKind("info");
       setSubmitMsg(
-        `Saved to the database at ${new Date(submittedAt).toLocaleString()} (${result.itemCount} weights).`,
+        `Saved to Supabase at ${new Date(submittedAt).toLocaleString()} (${result.itemCount} weights).`,
       );
     } catch (err) {
       const message = err instanceof Error ? err.message : "Submit failed.";
       setSubmitKind("warn");
-      setSubmitMsg(`Could not save to the database. ${message}`);
+      setSubmitMsg(`Could not save to Supabase. ${message}`);
     } finally {
       setSubmitting(false);
     }
