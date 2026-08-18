@@ -24,13 +24,10 @@ import {
   subcategoriesForCatalogSpace,
   updateLinkedSuggestion,
   buildCompanySuggestionsV3,
+  emptyWeightingSession,
 } from "../lib/weighting";
 import { submitWeightingToSupabase } from "../lib/submitWeighting";
-import {
-  clearWeightingSession,
-  loadWeightingSession,
-  saveWeightingSession,
-} from "../lib/storage";
+import { clearWeightingSession } from "../lib/storage";
 import { downloadJson } from "../lib/export";
 import { type PeerRow } from "../components/WeightEditorRow";
 import { ScoringHierarchyChart } from "../components/ScoringHierarchyChart";
@@ -73,7 +70,7 @@ function peersForKey(
 
 export function WeightingPage() {
   const { catalog, hierarchy, companiesV3 } = useAppData();
-  const [session, setSession] = useState(loadWeightingSession);
+  const [session, setSession] = useState(emptyWeightingSession);
   const [tab, setTab] = useState<LevelTab>("building");
   const [nav, setNav] = useState<NavSelection>({});
   const [expanded, setExpanded] = useState<Record<string, boolean>>({});
@@ -82,8 +79,8 @@ export function WeightingPage() {
   const [submitting, setSubmitting] = useState(false);
 
   useEffect(() => {
-    saveWeightingSession(session);
-  }, [session]);
+    clearWeightingSession();
+  }, []);
 
   const level =
     hierarchy && session.schoolLevel
@@ -372,7 +369,7 @@ export function WeightingPage() {
             onClick={() => {
               if (confirm("Clear weighting session?")) {
                 clearWeightingSession();
-                setSession(loadWeightingSession());
+                setSession(emptyWeightingSession());
                 setNav({});
                 setTab("building");
                 setSubmitMsg("");

@@ -95,26 +95,79 @@ export async function submitWeightingToSupabase(
   payload: CompanySuggestionsV3,
   level: HierarchySchoolLevel,
 ): Promise<{ id: string; itemCount: number }> {
-  const items = flattenWeightingItems(payload, level);
-  const res = await fetch("/api/submit-weighting", {
+  const url = import.meta.env.VITE_SUPABASE_URL?.trim().replace(/\/$/, "");
+  const key = import.meta.env.VITE_SUPABASE_ANON_KEY?.trim();
+  if (!url || !key) {
+    throw new Error(
+      "Supabase is not configured. Set VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY, then rebuild the site.",
+    );
+  }
+
+  const items = flattenWeightingItems(payload, level).filter(
+    (item) => Number.isInteger(item.weight) && item.weight > 0 && item.item_key && item.layer,
+  );
+
+  const headers = {
+    apikey: key,
+    Authorization: `Bearer ${key}`,
+    "Content-Type": "application/json",
+    Prefer: "return=representation",
+  };
+
+  const subRes = await fetch(`${url}/rest/v1/weighting_submissions`, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers,
     body: JSON.stringify({
       company: payload.company,
       contact: payload.contact ?? null,
       school_level: payload.schoolLevel,
       hierarchy_generated_at: payload.hierarchyGeneratedAt ?? null,
+      payload_version: 3,
       raw_payload: payload,
-      items,
     }),
   });
-  const data = (await res.json().catch(() => ({}))) as {
-    id?: string;
-    itemCount?: number;
-    error?: string;
-  };
-  if (!res.ok || !data.id) {
-    throw new Error(data.error || `Could not save to Supabase (${res.status}).`);
+  const subText = await subRes.text();
+  if (!subRes.ok) {
+    throw new Error(pgError(subText) || `Supabase submission insert failed (${subRes.status}).`);
   }
-  return { id: data.id, itemCount: data.itemCount ?? items.length };
+  const subRows = JSON.parse(subText) as Array<{ id: string }>;
+  const id = subRows[0]?.id;
+  if (!id) throw new Error("Supabase did not return a submission id.");
+
+  if (items.length > 0) {
+    const itemRes = await fetch(`${url}/rest/v1/weighting_items`, {
+      method: "POST",
+      headers: { ...headers, Prefer: "return=minimal" },
+      body: JSON.stringify(
+        items.map((item) => ({
+          submission_id: id,
+          layer: item.layer,
+          item_key: item.item_key,
+          item_label: item.item_label,
+          weight: item.weight,
+          comment: item.comment,
+          include_in_score: item.include_in_score,
+          focus_area: item.focus_area,
+          space_type_id: item.space_type_id,
+          category: item.category,
+          subcategory: item.subcategory,
+        })),
+      ),
+    });
+    if (!itemRes.ok) {
+      const itemText = await itemRes.text();
+      throw new Error(pgError(itemText) || `Supabase items insert failed (${itemRes.status}).`);
+    }
+  }
+
+  return { id, itemCount: items.length };
+}
+
+function pgError(text: string): string {
+  try {
+    const parsed = JSON.parse(text) as { message?: string; error?: string; hint?: string };
+    return parsed.message || parsed.error || parsed.hint || text;
+  } catch {
+    return String(text || "").slice(0, 400);
+  }
 }
