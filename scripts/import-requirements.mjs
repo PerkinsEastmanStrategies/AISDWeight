@@ -67,6 +67,11 @@ function matchCatalogSpace(catalog, spaceTypeName, focusArea) {
       (target === "dining commons" && nameN === "food service")
     ) {
       score = nameN === "dining commons" ? 90 : 80;
+    } else if (
+      target === "mental wellness and counseling suite" &&
+      nameN === "mw and counseling suite"
+    ) {
+      score = 90;
     } else if (nameN.includes(target) || target.includes(nameN)) score = 70;
     else {
       const a = new Set(nameN.split(" "));

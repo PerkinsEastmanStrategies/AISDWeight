@@ -1,7 +1,7 @@
 {
   "meta": {
     "sourceFile": "ESA Space Type Surey Requirements.xlsx",
-    "generatedAt": "2026-08-18T16:27:27.312Z",
+    "generatedAt": "2026-08-18T22:31:38.548Z",
     "note": "Site → Focus Area → Space Type requirements by school level. Categories/subcategories come from catalog when matched."
   },
   "schoolLevels": [
@@ -80,8 +80,8 @@
               "minSurveys": 1,
               "navFocusArea": "Arrival/Administration",
               "scoringFocus": "Arrival/Administration",
-              "catalogSpaceTypeId": "mw-and-counseling-suite__mental-wellness-and-counseling-suite",
-              "catalogSpaceTypeName": "Mental Wellness and Counseling Suite"
+              "catalogSpaceTypeId": "mw-and-counseling-suite__mw-and-counseling-suite",
+              "catalogSpaceTypeName": "MW and Counseling Suite"
             }
           ]
         },
@@ -322,7 +322,7 @@
               "minSurveys": 1,
               "navFocusArea": "Shared Spaces",
               "scoringFocus": "Shared Spaces",
-              "catalogSpaceTypeId": "athletics__competition-gym",
+              "catalogSpaceTypeId": "athletics-wellness__competition-gym",
               "catalogSpaceTypeName": "Competition Gym"
             },
             {
@@ -465,8 +465,8 @@
               "minSurveys": 1,
               "navFocusArea": "Arrival/Administration",
               "scoringFocus": "Arrival/Administration",
-              "catalogSpaceTypeId": "mw-and-counseling-suite__mental-wellness-and-counseling-suite",
-              "catalogSpaceTypeName": "Mental Wellness and Counseling Suite"
+              "catalogSpaceTypeId": "mw-and-counseling-suite__mw-and-counseling-suite",
+              "catalogSpaceTypeName": "MW and Counseling Suite"
             }
           ]
         },
@@ -866,7 +866,7 @@
               "minSurveys": 1,
               "navFocusArea": "Athletics and Wellness",
               "scoringFocus": "Athletics and Wellness",
-              "catalogSpaceTypeId": "athletics__multipurpose-gym",
+              "catalogSpaceTypeId": "athletics-wellness__multipurpose-gym",
               "catalogSpaceTypeName": "Multipurpose Gym"
             },
             {
@@ -879,7 +879,7 @@
               "minSurveys": 1,
               "navFocusArea": "Athletics and Wellness",
               "scoringFocus": "Athletics and Wellness",
-              "catalogSpaceTypeId": "athletics__practice-gym",
+              "catalogSpaceTypeId": "athletics-wellness__practice-gym",
               "catalogSpaceTypeName": "Practice Gym"
             },
             {
@@ -892,7 +892,7 @@
               "minSurveys": 1,
               "navFocusArea": "Athletics and Wellness",
               "scoringFocus": "Athletics and Wellness",
-              "catalogSpaceTypeId": "athletics__locker-rooms",
+              "catalogSpaceTypeId": "athletics-wellness__locker-rooms",
               "catalogSpaceTypeName": "Locker rooms"
             },
             {
@@ -905,7 +905,7 @@
               "minSurveys": 1,
               "navFocusArea": "Athletics and Wellness",
               "scoringFocus": "Athletics and Wellness",
-              "catalogSpaceTypeId": "athletics__weight-room",
+              "catalogSpaceTypeId": "athletics-wellness__weight-room",
               "catalogSpaceTypeName": "Weight Room"
             },
             {
@@ -918,7 +918,7 @@
               "minSurveys": 0,
               "navFocusArea": "Athletics and Wellness",
               "scoringFocus": "Athletics and Wellness",
-              "catalogSpaceTypeId": "athletics__wrestling",
+              "catalogSpaceTypeId": "athletics-wellness__wrestling",
               "catalogSpaceTypeName": "Wrestling"
             },
             {
@@ -931,7 +931,7 @@
               "minSurveys": 0,
               "navFocusArea": "Athletics and Wellness",
               "scoringFocus": "Athletics and Wellness",
-              "catalogSpaceTypeId": "athletics__pe-fitness-room",
+              "catalogSpaceTypeId": "athletics-wellness__pe-fitness-room",
               "catalogSpaceTypeName": "PE Fitness Room"
             },
             {
@@ -944,7 +944,7 @@
               "minSurveys": 0,
               "navFocusArea": "Athletics and Wellness",
               "scoringFocus": "Athletics and Wellness",
-              "catalogSpaceTypeId": "athletics__athletics-wing",
+              "catalogSpaceTypeId": "athletics-wellness__athletics-wing",
               "catalogSpaceTypeName": "Athletics Wing"
             }
           ]
@@ -1027,7 +1027,7 @@
               "minSurveys": 1,
               "navFocusArea": "Outdoor Elements",
               "scoringFocus": "Athletics and Wellness",
-              "catalogSpaceTypeId": "athletics__outdoor-athletics",
+              "catalogSpaceTypeId": "athletics-wellness__outdoor-athletics",
               "catalogSpaceTypeName": "Outdoor Athletics"
             }
           ]
@@ -1109,8 +1109,8 @@
               "minSurveys": 1,
               "navFocusArea": "Arrival/Administration",
               "scoringFocus": "Arrival/Administration",
-              "catalogSpaceTypeId": "mw-and-counseling-suite__mental-wellness-and-counseling-suite",
-              "catalogSpaceTypeName": "Mental Wellness and Counseling Suite"
+              "catalogSpaceTypeId": "mw-and-counseling-suite__mw-and-counseling-suite",
+              "catalogSpaceTypeName": "MW and Counseling Suite"
             }
           ]
         },
@@ -1508,7 +1508,7 @@
               "minSurveys": 1,
               "navFocusArea": "Athletics and Wellness",
               "scoringFocus": "Athletics and Wellness",
-              "catalogSpaceTypeId": "athletics__multipurpose-gym",
+              "catalogSpaceTypeId": "athletics-wellness__multipurpose-gym",
               "catalogSpaceTypeName": "Multipurpose Gym"
             },
             {
@@ -1521,7 +1521,7 @@
               "minSurveys": 1,
               "navFocusArea": "Athletics and Wellness",
               "scoringFocus": "Athletics and Wellness",
-              "catalogSpaceTypeId": "athletics__competition-gym",
+              "catalogSpaceTypeId": "athletics-wellness__competition-gym",
               "catalogSpaceTypeName": "Competition Gym"
             },
             {
@@ -1534,7 +1534,7 @@
               "minSurveys": 1,
               "navFocusArea": "Athletics and Wellness",
               "scoringFocus": "Athletics and Wellness",
-              "catalogSpaceTypeId": "athletics__locker-rooms",
+              "catalogSpaceTypeId": "athletics-wellness__locker-rooms",
               "catalogSpaceTypeName": "Locker rooms"
             },
             {
@@ -1547,7 +1547,7 @@
               "minSurveys": 1,
               "navFocusArea": "Athletics and Wellness",
               "scoringFocus": "Athletics and Wellness",
-              "catalogSpaceTypeId": "athletics__weight-room",
+              "catalogSpaceTypeId": "athletics-wellness__weight-room",
               "catalogSpaceTypeName": "Weight Room"
             },
             {
@@ -1560,7 +1560,7 @@
               "minSurveys": 1,
               "navFocusArea": "Athletics and Wellness",
               "scoringFocus": "Athletics and Wellness",
-              "catalogSpaceTypeId": "athletics__wrestling",
+              "catalogSpaceTypeId": "athletics-wellness__wrestling",
               "catalogSpaceTypeName": "Wrestling"
             },
             {
@@ -1573,7 +1573,7 @@
               "minSurveys": 2,
               "navFocusArea": "Athletics and Wellness",
               "scoringFocus": "Athletics and Wellness",
-              "catalogSpaceTypeId": "athletics__pe-fitness-room",
+              "catalogSpaceTypeId": "athletics-wellness__pe-fitness-room",
               "catalogSpaceTypeName": "PE Fitness Room"
             },
             {
@@ -1586,7 +1586,7 @@
               "minSurveys": 1,
               "navFocusArea": "Athletics and Wellness",
               "scoringFocus": "Athletics and Wellness",
-              "catalogSpaceTypeId": "athletics__athletics-wing",
+              "catalogSpaceTypeId": "athletics-wellness__athletics-wing",
               "catalogSpaceTypeName": "Athletics Wing"
             }
           ]
@@ -1669,7 +1669,7 @@
               "minSurveys": 1,
               "navFocusArea": "Outdoor",
               "scoringFocus": "Athletics and Wellness",
-              "catalogSpaceTypeId": "athletics__outdoor-athletics",
+              "catalogSpaceTypeId": "athletics-wellness__outdoor-athletics",
               "catalogSpaceTypeName": "Outdoor Athletics"
             }
           ]
