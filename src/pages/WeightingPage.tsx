@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { useAppData } from "../lib/DataContext";
 import type {
+  CompanySuggestionsV3,
   HierarchySpaceType,
   SchoolLevelId,
   WeightEntry,
