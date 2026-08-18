@@ -58,10 +58,16 @@ function matchCatalogSpace(catalog, spaceTypeName, focusArea) {
   let bestScore = 0;
   for (const st of catalog.spaceTypes) {
     const nameN = normName(st.name);
+    const sheetN = normName(st.sheet);
     const stFocus = normName(st.focusArea === "Outdoor" ? "Outdoor Elements" : st.focusArea);
     let score = 0;
     if (nameN === target) score = 100;
-    else if (nameN.includes(target) || target.includes(nameN)) score = 70;
+    else if (
+      (target === "food service" && (nameN === "dining commons" || nameN === "kitchen")) ||
+      (target === "dining commons" && nameN === "food service")
+    ) {
+      score = nameN === "dining commons" ? 90 : 80;
+    } else if (nameN.includes(target) || target.includes(nameN)) score = 70;
     else {
       const a = new Set(nameN.split(" "));
       const b = new Set(target.split(" "));
@@ -70,6 +76,8 @@ function matchCatalogSpace(catalog, spaceTypeName, focusArea) {
       score = (overlap / Math.max(a.size, b.size)) * 50;
     }
     if (score >= 50 && stFocus === focusN) score += 15;
+    // Prefer the dedicated sheet when the same space name appears on more than one tab.
+    if (score >= 50 && (sheetN === nameN || sheetN === target)) score += 5;
     if (score > bestScore) {
       bestScore = score;
       best = st;

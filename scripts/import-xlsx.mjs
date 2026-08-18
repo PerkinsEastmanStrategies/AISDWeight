@@ -1,5 +1,5 @@
 /**
- * ETL: AISD ESA Survey Final Draft_Copy.xlsx → public/data/catalog.json
+ * ETL: AISD ESA Survey Final Draft.xlsx → public/data/catalog.json
  * Usage: node scripts/import-xlsx.mjs [path-to-xlsx]
  */
 import fs from "node:fs";
@@ -10,7 +10,7 @@ import XLSX from "xlsx";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(__dirname, "..");
 const defaultXlsx =
-  "C:\\Users\\k.rasmussen\\Downloads\\AISD ESA Survey Final Draft_Copy.xlsx";
+  "C:\\Users\\k.rasmussen\\OneDrive - Perkins Eastman Architects DPC\\AISD\\AISD ESA Survey Final Draft.xlsx";
 
 const xlsxPath = process.argv[2] || defaultXlsx;
 const outDir = path.join(root, "public", "data");
@@ -122,7 +122,7 @@ for (const sheetName of wb.SheetNames) {
     const qid = col(row, ["QuestionID", "Question ID"]);
     const surveyFocus = col(row, ["Survey Focus Area"]);
     const scoreFocus = col(row, ["Score Focus Area"]);
-    const spaceType = col(row, ["Space Type"]);
+    const spaceType = col(row, ["Space Type", "Space"]);
     const category = col(row, ["Category"]);
     const subcategory = col(row, ["Subcategory"]);
     const schoolLevel = col(row, ["School Level"]);

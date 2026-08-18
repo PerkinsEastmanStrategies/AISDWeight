@@ -1,14 +1,14 @@
 {
-  "generatedAt": "2026-08-03T20:55:20.378Z",
+  "generatedAt": "2026-08-18T16:25:47.872Z",
   "totals": {
-    "sheets": 16,
-    "questions": 571,
-    "spaceTypes": 29,
-    "focusAreas": 6,
-    "autoSimilarityGroups": 77,
+    "sheets": 25,
+    "questions": 1093,
+    "spaceTypes": 52,
+    "focusAreas": 10,
+    "autoSimilarityGroups": 109,
     "scoring": 242,
     "inventory": 35,
-    "blank": 292,
+    "blank": 814,
     "incomplete": 2
   },
   "incomplete": [

@@ -1,7 +1,7 @@
 {
   "meta": {
     "sourceFile": "ESA Space Type Surey Requirements.xlsx",
-    "generatedAt": "2026-08-18T14:22:47.192Z",
+    "generatedAt": "2026-08-18T16:27:27.312Z",
     "note": "Site → Focus Area → Space Type requirements by school level. Categories/subcategories come from catalog when matched."
   },
   "schoolLevels": [
@@ -26,7 +26,7 @@
               "minSurveys": 1,
               "navFocusArea": "Arrival/Administration",
               "scoringFocus": "Arrival/Administration",
-              "catalogSpaceTypeId": "admin-offices__main-admin-suite",
+              "catalogSpaceTypeId": "main-admin-suite__main-admin-suite",
               "catalogSpaceTypeName": "Main Admin Suite"
             },
             {
@@ -131,8 +131,8 @@
               "notes": "The assessor should review the room that was designed to be an art room",
               "navFocusArea": "Studios",
               "scoringFocus": "Studios",
-              "catalogSpaceTypeId": "community-partners-suite__community-partners-suite",
-              "catalogSpaceTypeName": "Community Partners Suite"
+              "catalogSpaceTypeId": "visual-arts__2d-art-studio",
+              "catalogSpaceTypeName": "2D Art Studio"
             },
             {
               "id": "ES::music-studio",
@@ -145,8 +145,8 @@
               "notes": "The assessor should review the room that was designed to be a music room",
               "navFocusArea": "Studios",
               "scoringFocus": "Studios",
-              "catalogSpaceTypeId": null,
-              "catalogSpaceTypeName": null
+              "catalogSpaceTypeId": "music__music-studio",
+              "catalogSpaceTypeName": "Music Studio"
             },
             {
               "id": "ES::maker-space",
@@ -272,8 +272,8 @@
               "notes": "Should be assessed per neighborhood",
               "navFocusArea": "Neighborhoods",
               "scoringFocus": "Neighborhoods",
-              "catalogSpaceTypeId": null,
-              "catalogSpaceTypeName": null
+              "catalogSpaceTypeId": "neighborhoods__open-collaboration",
+              "catalogSpaceTypeName": "Open Collaboration"
             },
             {
               "id": "ES::small-group-room",
@@ -286,8 +286,8 @@
               "notes": "Should be assessed per neighborhood",
               "navFocusArea": "Neighborhoods",
               "scoringFocus": "Neighborhoods",
-              "catalogSpaceTypeId": null,
-              "catalogSpaceTypeName": null
+              "catalogSpaceTypeId": "neighborhoods__group-room",
+              "catalogSpaceTypeName": "Group Room"
             },
             {
               "id": "ES::neighborhood",
@@ -300,8 +300,8 @@
               "notes": "The assessor should complete for each neighborhood",
               "navFocusArea": "Neighborhoods",
               "scoringFocus": "Neighborhoods",
-              "catalogSpaceTypeId": null,
-              "catalogSpaceTypeName": null
+              "catalogSpaceTypeId": "neighborhoods__neighborhood",
+              "catalogSpaceTypeName": "Neighborhood"
             }
           ]
         },
@@ -348,8 +348,8 @@
               "minSurveys": 1,
               "navFocusArea": "Shared Spaces",
               "scoringFocus": "Shared Spaces",
-              "catalogSpaceTypeId": null,
-              "catalogSpaceTypeName": null
+              "catalogSpaceTypeId": "food-service__dining-commons",
+              "catalogSpaceTypeName": "Dining Commons"
             },
             {
               "id": "ES::empower-center",
@@ -361,8 +361,8 @@
               "minSurveys": 0,
               "navFocusArea": "Shared Spaces",
               "scoringFocus": "Shared Spaces",
-              "catalogSpaceTypeId": null,
-              "catalogSpaceTypeName": null
+              "catalogSpaceTypeId": "empower-center__empower-center",
+              "catalogSpaceTypeName": "Empower Center"
             }
           ]
         },
@@ -411,7 +411,7 @@
               "minSurveys": 1,
               "navFocusArea": "Arrival/Administration",
               "scoringFocus": "Arrival/Administration",
-              "catalogSpaceTypeId": "admin-offices__main-admin-suite",
+              "catalogSpaceTypeId": "main-admin-suite__main-admin-suite",
               "catalogSpaceTypeName": "Main Admin Suite"
             },
             {
@@ -529,8 +529,8 @@
               "minSurveys": 0,
               "navFocusArea": "Studios",
               "scoringFocus": "Studios",
-              "catalogSpaceTypeId": null,
-              "catalogSpaceTypeName": null
+              "catalogSpaceTypeId": "music__music-studio",
+              "catalogSpaceTypeName": "Music Studio"
             },
             {
               "id": "MS::maker-space",
@@ -641,8 +641,8 @@
               "minSurveys": 1,
               "navFocusArea": "Visual Arts",
               "scoringFocus": "Studios",
-              "catalogSpaceTypeId": null,
-              "catalogSpaceTypeName": null
+              "catalogSpaceTypeId": "visual-arts__2d-art-studio",
+              "catalogSpaceTypeName": "2D Art Studio"
             },
             {
               "id": "MS::3d-art-studio",
@@ -654,8 +654,8 @@
               "minSurveys": 1,
               "navFocusArea": "Visual Arts",
               "scoringFocus": "Studios",
-              "catalogSpaceTypeId": null,
-              "catalogSpaceTypeName": null
+              "catalogSpaceTypeId": "visual-arts__3d-art-studio",
+              "catalogSpaceTypeName": "3D Art Studio"
             },
             {
               "id": "MS::digital-art-studio",
@@ -667,8 +667,8 @@
               "minSurveys": 1,
               "navFocusArea": "Visual Arts",
               "scoringFocus": "Studios",
-              "catalogSpaceTypeId": null,
-              "catalogSpaceTypeName": null
+              "catalogSpaceTypeId": "visual-arts__art-studio",
+              "catalogSpaceTypeName": "Art Studio"
             }
           ]
         },
@@ -690,8 +690,8 @@
               "notes": "Assess representative rooms, more if conditions vary",
               "navFocusArea": "CTE",
               "scoringFocus": "CTE",
-              "catalogSpaceTypeId": null,
-              "catalogSpaceTypeName": null
+              "catalogSpaceTypeId": "cte-studio__cte-studio",
+              "catalogSpaceTypeName": "CTE Studio"
             }
           ]
         },
@@ -713,8 +713,8 @@
               "notes": "Asses 1",
               "navFocusArea": "Performing Arts",
               "scoringFocus": "Performing Arts",
-              "catalogSpaceTypeId": null,
-              "catalogSpaceTypeName": null
+              "catalogSpaceTypeId": "performing-arts__theater-arts-studio",
+              "catalogSpaceTypeName": "Theater Arts Studio"
             },
             {
               "id": "MS::rehearsal-hall",
@@ -727,8 +727,8 @@
               "notes": "Assess representative rooms, more if conditions vary",
               "navFocusArea": "Performing Arts",
               "scoringFocus": "Performing Arts",
-              "catalogSpaceTypeId": null,
-              "catalogSpaceTypeName": null
+              "catalogSpaceTypeId": "music__rehearsal-hall",
+              "catalogSpaceTypeName": "Rehearsal Hall"
             },
             {
               "id": "MS::music-suite",
@@ -740,8 +740,8 @@
               "minSurveys": 1,
               "navFocusArea": "Performing Arts",
               "scoringFocus": "Performing Arts",
-              "catalogSpaceTypeId": null,
-              "catalogSpaceTypeName": null
+              "catalogSpaceTypeId": "music__music-suite",
+              "catalogSpaceTypeName": "Music Suite"
             },
             {
               "id": "MS::black-box",
@@ -753,8 +753,8 @@
               "minSurveys": 0,
               "navFocusArea": "Performing Arts",
               "scoringFocus": "Performing Arts",
-              "catalogSpaceTypeId": null,
-              "catalogSpaceTypeName": null
+              "catalogSpaceTypeId": "performing-arts__black-box",
+              "catalogSpaceTypeName": "Black Box"
             },
             {
               "id": "MS::auditorium",
@@ -766,8 +766,8 @@
               "minSurveys": 0,
               "navFocusArea": "Performing Arts",
               "scoringFocus": "Performing Arts",
-              "catalogSpaceTypeId": null,
-              "catalogSpaceTypeName": null
+              "catalogSpaceTypeId": "performing-arts__auditorium",
+              "catalogSpaceTypeName": "Auditorium"
             },
             {
               "id": "MS::dance",
@@ -779,8 +779,8 @@
               "minSurveys": 0,
               "navFocusArea": "Performing Arts",
               "scoringFocus": "Performing Arts",
-              "catalogSpaceTypeId": null,
-              "catalogSpaceTypeName": null
+              "catalogSpaceTypeId": "performing-arts__dance",
+              "catalogSpaceTypeName": "Dance"
             }
           ]
         },
@@ -802,8 +802,8 @@
               "notes": "Should be assessed per neighborhood",
               "navFocusArea": "Neighborhoods",
               "scoringFocus": "Neighborhoods",
-              "catalogSpaceTypeId": null,
-              "catalogSpaceTypeName": null
+              "catalogSpaceTypeId": "neighborhoods__open-collaboration",
+              "catalogSpaceTypeName": "Open Collaboration"
             },
             {
               "id": "MS::small-group-room",
@@ -816,8 +816,8 @@
               "notes": "Should be assessed per neighborhood",
               "navFocusArea": "Neighborhoods",
               "scoringFocus": "Neighborhoods",
-              "catalogSpaceTypeId": null,
-              "catalogSpaceTypeName": null
+              "catalogSpaceTypeId": "neighborhoods__group-room",
+              "catalogSpaceTypeName": "Group Room"
             },
             {
               "id": "MS::large-group-room",
@@ -830,8 +830,8 @@
               "notes": "Should be assessed per neighborhood",
               "navFocusArea": "Neighborhoods",
               "scoringFocus": "Neighborhoods",
-              "catalogSpaceTypeId": null,
-              "catalogSpaceTypeName": null
+              "catalogSpaceTypeId": "neighborhoods__group-room",
+              "catalogSpaceTypeName": "Group Room"
             },
             {
               "id": "MS::neighborhood",
@@ -844,8 +844,8 @@
               "notes": "Should be assessed per neighborhood",
               "navFocusArea": "Neighborhoods",
               "scoringFocus": "Neighborhoods",
-              "catalogSpaceTypeId": null,
-              "catalogSpaceTypeName": null
+              "catalogSpaceTypeId": "neighborhoods__neighborhood",
+              "catalogSpaceTypeName": "Neighborhood"
             }
           ]
         },
@@ -979,8 +979,8 @@
               "minSurveys": 1,
               "navFocusArea": "Shared Spaces",
               "scoringFocus": "Shared Spaces",
-              "catalogSpaceTypeId": null,
-              "catalogSpaceTypeName": null
+              "catalogSpaceTypeId": "food-service__dining-commons",
+              "catalogSpaceTypeName": "Dining Commons"
             },
             {
               "id": "MS::empower-center",
@@ -992,8 +992,8 @@
               "minSurveys": 1,
               "navFocusArea": "Shared Spaces",
               "scoringFocus": "Shared Spaces",
-              "catalogSpaceTypeId": null,
-              "catalogSpaceTypeName": null
+              "catalogSpaceTypeId": "empower-center__empower-center",
+              "catalogSpaceTypeName": "Empower Center"
             }
           ]
         },
@@ -1055,7 +1055,7 @@
               "minSurveys": 1,
               "navFocusArea": "Arrival/Administration",
               "scoringFocus": "Arrival/Administration",
-              "catalogSpaceTypeId": "admin-offices__main-admin-suite",
+              "catalogSpaceTypeId": "main-admin-suite__main-admin-suite",
               "catalogSpaceTypeName": "Main Admin Suite"
             },
             {
@@ -1270,8 +1270,8 @@
               "minSurveys": 1,
               "navFocusArea": "Visual Arts",
               "scoringFocus": "Studios",
-              "catalogSpaceTypeId": null,
-              "catalogSpaceTypeName": null
+              "catalogSpaceTypeId": "visual-arts__2d-art-studio",
+              "catalogSpaceTypeName": "2D Art Studio"
             },
             {
               "id": "HS::3d-art-studio",
@@ -1283,8 +1283,8 @@
               "minSurveys": 1,
               "navFocusArea": "Visual Arts",
               "scoringFocus": "Studios",
-              "catalogSpaceTypeId": null,
-              "catalogSpaceTypeName": null
+              "catalogSpaceTypeId": "visual-arts__3d-art-studio",
+              "catalogSpaceTypeName": "3D Art Studio"
             },
             {
               "id": "HS::digital-art-studio",
@@ -1296,8 +1296,8 @@
               "minSurveys": 1,
               "navFocusArea": "Visual Arts",
               "scoringFocus": "Studios",
-              "catalogSpaceTypeId": null,
-              "catalogSpaceTypeName": null
+              "catalogSpaceTypeId": "visual-arts__art-studio",
+              "catalogSpaceTypeName": "Art Studio"
             }
           ]
         },
@@ -1319,8 +1319,8 @@
               "notes": "Assess representative rooms, more if conditions vary",
               "navFocusArea": "CTE",
               "scoringFocus": "CTE",
-              "catalogSpaceTypeId": null,
-              "catalogSpaceTypeName": null
+              "catalogSpaceTypeId": "cte-studio__cte-studio",
+              "catalogSpaceTypeName": "CTE Studio"
             }
           ]
         },
@@ -1342,8 +1342,8 @@
               "notes": "Assess representative rooms, more if conditions vary",
               "navFocusArea": "Performing Arts",
               "scoringFocus": "Performing Arts",
-              "catalogSpaceTypeId": null,
-              "catalogSpaceTypeName": null
+              "catalogSpaceTypeId": "music__rehearsal-hall",
+              "catalogSpaceTypeName": "Rehearsal Hall"
             },
             {
               "id": "HS::music-suite",
@@ -1355,8 +1355,8 @@
               "minSurveys": 1,
               "navFocusArea": "Performing Arts",
               "scoringFocus": "Performing Arts",
-              "catalogSpaceTypeId": null,
-              "catalogSpaceTypeName": null
+              "catalogSpaceTypeId": "music__music-suite",
+              "catalogSpaceTypeName": "Music Suite"
             },
             {
               "id": "HS::theater-arts-studio",
@@ -1369,8 +1369,8 @@
               "notes": "Assess 1 representative room. Include a 2nd room if conditions vary.",
               "navFocusArea": "Performing Arts",
               "scoringFocus": "Performing Arts",
-              "catalogSpaceTypeId": null,
-              "catalogSpaceTypeName": null
+              "catalogSpaceTypeId": "performing-arts__theater-arts-studio",
+              "catalogSpaceTypeName": "Theater Arts Studio"
             },
             {
               "id": "HS::black-box",
@@ -1382,8 +1382,8 @@
               "minSurveys": 1,
               "navFocusArea": "Performing Arts",
               "scoringFocus": "Performing Arts",
-              "catalogSpaceTypeId": null,
-              "catalogSpaceTypeName": null
+              "catalogSpaceTypeId": "performing-arts__black-box",
+              "catalogSpaceTypeName": "Black Box"
             },
             {
               "id": "HS::auditorium",
@@ -1395,8 +1395,8 @@
               "minSurveys": 1,
               "navFocusArea": "Performing Arts",
               "scoringFocus": "Performing Arts",
-              "catalogSpaceTypeId": null,
-              "catalogSpaceTypeName": null
+              "catalogSpaceTypeId": "performing-arts__auditorium",
+              "catalogSpaceTypeName": "Auditorium"
             },
             {
               "id": "HS::dance",
@@ -1408,8 +1408,8 @@
               "minSurveys": 1,
               "navFocusArea": "Performing Arts",
               "scoringFocus": "Performing Arts",
-              "catalogSpaceTypeId": null,
-              "catalogSpaceTypeName": null
+              "catalogSpaceTypeId": "performing-arts__dance",
+              "catalogSpaceTypeName": "Dance"
             },
             {
               "id": "HS::theater-arts-suite",
@@ -1421,8 +1421,8 @@
               "minSurveys": 2,
               "navFocusArea": "Performing Arts",
               "scoringFocus": "Performing Arts",
-              "catalogSpaceTypeId": null,
-              "catalogSpaceTypeName": null
+              "catalogSpaceTypeId": "performing-arts__theater-arts-suite",
+              "catalogSpaceTypeName": "Theater Arts Suite"
             }
           ]
         },
@@ -1444,8 +1444,8 @@
               "notes": "Should be assessed per neighborhood",
               "navFocusArea": "Neighborhoods",
               "scoringFocus": "Neighborhoods",
-              "catalogSpaceTypeId": null,
-              "catalogSpaceTypeName": null
+              "catalogSpaceTypeId": "neighborhoods__open-collaboration",
+              "catalogSpaceTypeName": "Open Collaboration"
             },
             {
               "id": "HS::small-group-room",
@@ -1458,8 +1458,8 @@
               "notes": "Should be assessed per neighborhood",
               "navFocusArea": "Neighborhoods",
               "scoringFocus": "Neighborhoods",
-              "catalogSpaceTypeId": null,
-              "catalogSpaceTypeName": null
+              "catalogSpaceTypeId": "neighborhoods__group-room",
+              "catalogSpaceTypeName": "Group Room"
             },
             {
               "id": "HS::large-group-room",
@@ -1472,8 +1472,8 @@
               "notes": "Should be assessed per neighborhood",
               "navFocusArea": "Neighborhoods",
               "scoringFocus": "Neighborhoods",
-              "catalogSpaceTypeId": null,
-              "catalogSpaceTypeName": null
+              "catalogSpaceTypeId": "neighborhoods__group-room",
+              "catalogSpaceTypeName": "Group Room"
             },
             {
               "id": "HS::neighborhood",
@@ -1486,8 +1486,8 @@
               "notes": "Should be assessed per neighborhood",
               "navFocusArea": "Neighborhoods",
               "scoringFocus": "Neighborhoods",
-              "catalogSpaceTypeId": null,
-              "catalogSpaceTypeName": null
+              "catalogSpaceTypeId": "neighborhoods__neighborhood",
+              "catalogSpaceTypeName": "Neighborhood"
             }
           ]
         },
@@ -1621,8 +1621,8 @@
               "minSurveys": 1,
               "navFocusArea": "Shared Spaces",
               "scoringFocus": "Shared Spaces",
-              "catalogSpaceTypeId": null,
-              "catalogSpaceTypeName": null
+              "catalogSpaceTypeId": "food-service__dining-commons",
+              "catalogSpaceTypeName": "Dining Commons"
             },
             {
               "id": "HS::empower-center",
@@ -1634,8 +1634,8 @@
               "minSurveys": 1,
               "navFocusArea": "Shared Spaces",
               "scoringFocus": "Shared Spaces",
-              "catalogSpaceTypeId": null,
-              "catalogSpaceTypeName": null
+              "catalogSpaceTypeId": "empower-center__empower-center",
+              "catalogSpaceTypeName": "Empower Center"
             }
           ]
         },
