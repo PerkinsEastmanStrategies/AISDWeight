@@ -114,19 +114,29 @@ export async function submitWeightingToSupabase(
     Prefer: "return=representation",
   };
 
-  const subRes = await fetch(`${url}/rest/v1/weighting_submissions`, {
-    method: "POST",
-    headers,
-    body: JSON.stringify({
+  async function insertSubmission(includeName: boolean) {
+    const row: Record<string, unknown> = {
       company: payload.company,
       contact: payload.contact ?? null,
       school_level: payload.schoolLevel,
       hierarchy_generated_at: payload.hierarchyGeneratedAt ?? null,
       payload_version: 3,
       raw_payload: payload,
-    }),
-  });
-  const subText = await subRes.text();
+    };
+    if (includeName) row.reviewer_name = payload.reviewerName ?? null;
+    return fetch(`${url}/rest/v1/weighting_submissions`, {
+      method: "POST",
+      headers,
+      body: JSON.stringify(row),
+    });
+  }
+
+  let subRes = await insertSubmission(true);
+  let subText = await subRes.text();
+  if (!subRes.ok && /reviewer_name/i.test(subText)) {
+    subRes = await insertSubmission(false);
+    subText = await subRes.text();
+  }
   if (!subRes.ok) {
     throw new Error(pgError(subText) || `Supabase submission insert failed (${subRes.status}).`);
   }

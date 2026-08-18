@@ -98,3 +98,47 @@
 .question-preview-list .mono {
   color: var(--muted, #6a6a6a);
 }
+.picker-box { margin-bottom: 0.85rem; }
+.picker-tabs { margin: 0 !important; padding: 0 !important; }
+.space-picker-wrap { overflow-x: auto; }
+.space-picker-table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 720px;
+  background: #fff;
+}
+.space-picker-table th {
+  background: var(--accent-soft, #e4e8f2);
+  color: var(--ink, #4b4b4b);
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-align: left;
+  padding: 0.55rem 0.65rem;
+  border: 1px solid var(--line, #d4d0c8);
+  white-space: nowrap;
+}
+.space-picker-table td {
+  vertical-align: top;
+  border: 1px solid var(--line, #d4d0c8);
+  padding: 0;
+  min-width: 140px;
+}
+.space-picker-cell {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.3rem;
+  width: 100%;
+  text-align: left;
+  font: inherit;
+  font-size: 0.85rem;
+  border: none;
+  background: #fff;
+  padding: 0.5rem 0.65rem;
+  cursor: pointer;
+  color: var(--ink, #4b4b4b);
+}
+.space-picker-cell:hover { background: var(--accent-soft, #e4e8f2); }
+.space-picker-cell.active { background: var(--accent, #293678); color: #fff; }
+.space-picker-cell.active .pill { border-color: #fff6; }
+

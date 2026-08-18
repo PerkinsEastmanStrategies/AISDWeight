@@ -22,6 +22,7 @@ export function isReviewed(session?: WeightEntry): boolean {
 export function emptyWeightingSession(): WeightingSession {
   return {
     company: "",
+    reviewerName: "",
     contact: "",
     schoolLevel: "",
     focusAreaWeights: {},
@@ -81,7 +82,7 @@ export function seedSessionForLevel(
     const fk = focusAreaKey(level.id, fa.name);
     if (!focusAreaWeights[fk]) {
       const entry: WeightEntry = {
-        importance: fa.importanceSeed,
+        importance: null,
         comment: "",
         includeInScore: true,
       };
@@ -94,7 +95,7 @@ export function seedSessionForLevel(
       const sk = spaceTypeKey(st.id);
       if (!spaceTypeWeights[sk]) {
         const entry: WeightEntry = {
-          importance: st.importanceSeed,
+          importance: null,
           comment: "",
           includeInScore: st.required,
         };
@@ -395,6 +396,7 @@ export function buildCompanySuggestionsV3(
   return {
     version: 3,
     company: session.company.trim(),
+    reviewerName: session.reviewerName.trim() || undefined,
     contact: session.contact.trim() || undefined,
     schoolLevel: session.schoolLevel,
     exportedAt: new Date().toISOString(),

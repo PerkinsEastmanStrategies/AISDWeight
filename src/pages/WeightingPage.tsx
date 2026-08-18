@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useAppData } from "../lib/DataContext";
 import type {
   CompanySuggestionsV3,
+  HierarchyFocusArea,
   HierarchySpaceType,
   SchoolLevelId,
   WeightEntry,
@@ -44,6 +45,12 @@ type NavSelection = {
   category?: string;
 };
 
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+function isEmail(value: string) {
+  return EMAIL_RE.test(value.trim());
+}
+
 function peersForKey(
   companies: CompanySuggestionsV3[],
   schoolLevel: SchoolLevelId,
@@ -69,12 +76,98 @@ function peersForKey(
   return out;
 }
 
+function FocusAreaPicker({
+  focusAreas,
+  selected,
+  onSelect,
+}: {
+  focusAreas: HierarchyFocusArea[];
+  selected?: string;
+  onSelect: (name: string) => void;
+}) {
+  return (
+    <div className="card picker-box">
+      <p className="muted" style={{ marginTop: 0, marginBottom: "0.55rem" }}>
+        Choose a focus area
+      </p>
+      <div className="level-tabs picker-tabs">
+        {focusAreas.map((fa) => (
+          <button
+            key={fa.name}
+            type="button"
+            className={selected === fa.name ? "active" : ""}
+            onClick={() => onSelect(fa.name)}
+          >
+            {fa.name}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function SpaceTypeTable({
+  focusAreas,
+  selectedId,
+  onSelect,
+}: {
+  focusAreas: HierarchyFocusArea[];
+  selectedId?: string;
+  onSelect: (focusArea: string, spaceTypeId: string) => void;
+}) {
+  const maxRows = Math.max(0, ...focusAreas.map((fa) => fa.spaceTypes.length));
+  return (
+    <div className="card picker-box">
+      <p className="muted" style={{ marginTop: 0, marginBottom: "0.55rem" }}>
+        Choose a space type
+      </p>
+      <div className="space-picker-wrap">
+        <table className="space-picker-table">
+          <thead>
+            <tr>
+              {focusAreas.map((fa) => (
+                <th key={fa.name}>{fa.name}</th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {Array.from({ length: maxRows }, (_, row) => (
+              <tr key={row}>
+                {focusAreas.map((fa) => {
+                  const st = fa.spaceTypes[row];
+                  return (
+                    <td key={fa.name}>
+                      {st ? (
+                        <button
+                          type="button"
+                          className={`space-picker-cell${
+                            selectedId === st.id ? " active" : ""
+                          }`}
+                          onClick={() => onSelect(fa.name, st.id)}
+                        >
+                          {st.name}
+                          {!st.required && (
+                            <span className="pill incomplete">N/R</span>
+                          )}
+                        </button>
+                      ) : null}
+                    </td>
+                  );
+                })}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+}
+
 export function WeightingPage() {
   const { catalog, hierarchy, companiesV3 } = useAppData();
   const [session, setSession] = useState(emptyWeightingSession);
   const [tab, setTab] = useState<LevelTab>("building");
   const [nav, setNav] = useState<NavSelection>({});
-  const [expanded, setExpanded] = useState<Record<string, boolean>>({});
   const [submitMsg, setSubmitMsg] = useState("");
   const [submitKind, setSubmitKind] = useState<"info" | "warn">("info");
   const [submitting, setSubmitting] = useState(false);
@@ -103,7 +196,6 @@ export function WeightingPage() {
     setSession((s) => seedSessionForLevel({ ...s, schoolLevel: id }, lv));
     setNav({});
     setTab("building");
-    setExpanded({});
   }
 
   function patchSession(
@@ -203,14 +295,12 @@ export function WeightingPage() {
   ]);
 
   function download() {
-    if (!hierarchy || !level || !session.schoolLevel) {
-      alert("Select a school level first.");
+    const missing = setupError();
+    if (missing) {
+      alert(missing);
       return;
     }
-    if (!session.company.trim()) {
-      alert("Enter a company name first.");
-      return;
-    }
+    if (!hierarchy || !level || !session.schoolLevel) return;
     const out = buildCompanySuggestionsV3(session, hierarchy, level);
     const slug = `${out.company}-${out.schoolLevel}`.replace(/\s+/g, "-").toLowerCase();
     downloadJson(`rollup-suggestions-${slug}.json`, out);
@@ -221,9 +311,19 @@ export function WeightingPage() {
     return schoolLevelReviewCounts(catalog, level, session);
   }, [catalog, level, session]);
 
+  function setupError(): string | null {
+    if (!session.company.trim()) return "Enter a company name first.";
+    if (!session.reviewerName.trim()) return "Enter a name first.";
+    if (!session.contact.trim()) return "Enter an email first.";
+    if (!isEmail(session.contact)) return "Enter a valid email address.";
+    if (!session.schoolLevel) return "Select a school level first.";
+    return null;
+  }
+
   async function submit() {
-    if (!session.company.trim()) {
-      alert("Enter a company name first.");
+    const missing = setupError();
+    if (missing) {
+      alert(missing);
       return;
     }
     if (!hierarchy || !level || !session.schoolLevel) {
@@ -315,49 +415,64 @@ export function WeightingPage() {
       <div className="card weighting-setup">
         <h2>Reviewer setup</h2>
         <p className="muted">
-          Enter who is reviewing and which school level to weight. Use the left panel and top
-          tabs to move through focus areas → space types → categories → subcategories.
+          Enter who is reviewing and which school level to weight. All fields are required
+          before you can submit. Use the tabs to move through focus areas → space types →
+          categories → subcategories.
         </p>
         <div className="grid-2">
           <div className="field">
-            <label>Company (required for export)</label>
+            <label>Company</label>
             <input
+              required
               value={session.company}
               onChange={(e) => setSession({ ...session, company: e.target.value })}
             />
           </div>
           <div className="field">
-            <label>Contact</label>
+            <label>Name</label>
             <input
+              required
+              value={session.reviewerName}
+              onChange={(e) => setSession({ ...session, reviewerName: e.target.value })}
+            />
+          </div>
+        </div>
+        <div className="grid-2" style={{ marginTop: "0.75rem" }}>
+          <div className="field">
+            <label>Email</label>
+            <input
+              required
+              type="email"
               value={session.contact}
               onChange={(e) => setSession({ ...session, contact: e.target.value })}
             />
           </div>
-        </div>
-        <div className="field" style={{ marginTop: "0.75rem", maxWidth: 280 }}>
-          <label>School level</label>
-          <select
-            value={session.schoolLevel}
-            onChange={(e) => {
-              const v = e.target.value as SchoolLevelId | "";
-              if (v) chooseLevel(v);
-              else setSession({ ...session, schoolLevel: "" });
-            }}
-          >
-            <option value="">Select…</option>
-            {hierarchy.schoolLevels.map((s) => (
-              <option key={s.id} value={s.id}>
-                {s.label} ({s.id})
-              </option>
-            ))}
-          </select>
+          <div className="field">
+            <label>School level</label>
+            <select
+              required
+              value={session.schoolLevel}
+              onChange={(e) => {
+                const v = e.target.value as SchoolLevelId | "";
+                if (v) chooseLevel(v);
+                else setSession({ ...session, schoolLevel: "" });
+              }}
+            >
+              <option value="">Select…</option>
+              {hierarchy.schoolLevels.map((s) => (
+                <option key={s.id} value={s.id}>
+                  {s.label} ({s.id})
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
         <div className="row" style={{ marginTop: "0.75rem" }}>
           <button
             type="button"
             className="btn primary"
             onClick={() => void submit()}
-            disabled={submitting}
+            disabled={submitting || Boolean(setupError())}
           >
             {submitting ? "Submitting…" : "Submit"}
           </button>
@@ -401,72 +516,7 @@ export function WeightingPage() {
         <div className="weighting-workspace">
           <aside className="weighting-nav card">
             <h3 style={{ marginTop: 0 }}>{level.label}</h3>
-            <p className="muted" style={{ fontSize: "0.85rem" }}>
-              Focus areas → space types
-            </p>
             <ReviewTracker title="School-level progress" rows={globalProgress} />
-            <ul className="tree" style={{ marginTop: "0.85rem" }}>
-              {level.focusAreas.map((fa) => {
-                const open = expanded[fa.name] ?? false;
-                const activeFa = nav.focusArea === fa.name && !nav.spaceTypeId;
-                return (
-                  <li key={fa.name}>
-                    <div className="tree-row">
-                      <button
-                        type="button"
-                        className="tree-toggle"
-                        aria-expanded={open}
-                        onClick={() =>
-                          setExpanded((e) => ({ ...e, [fa.name]: !open }))
-                        }
-                      >
-                        {open ? "▾" : "▸"}
-                      </button>
-                      <button
-                        type="button"
-                        className={`tree-link${activeFa ? " active" : ""}`}
-                        onClick={() => {
-                          setNav({ focusArea: fa.name });
-                          setTab("spaces");
-                          setExpanded((e) => ({ ...e, [fa.name]: true }));
-                        }}
-                      >
-                        {fa.name}
-                      </button>
-                    </div>
-                    {open && (
-                      <ul className="tree nested">
-                        {fa.spaceTypes.map((st) => (
-                          <li key={st.id}>
-                            <button
-                              type="button"
-                              className={`tree-link${
-                                nav.spaceTypeId === st.id ? " active" : ""
-                              }`}
-                              onClick={() => {
-                                setNav({
-                                  focusArea: fa.name,
-                                  spaceTypeId: st.id,
-                                });
-                                setTab("categories");
-                              }}
-                            >
-                              {st.name}
-                              {!st.required && (
-                                <span className="pill incomplete">N/R</span>
-                              )}
-                              {!st.catalogSpaceTypeId && (
-                                <span className="pill incomplete">No survey</span>
-                              )}
-                            </button>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                  </li>
-                );
-              })}
-            </ul>
           </aside>
 
           <section className="weighting-main">
@@ -513,15 +563,23 @@ export function WeightingPage() {
               />
             )}
 
-            {tab === "spaces" &&
-              (!nav.focusArea ? (
-                <div className="card weighting-panel">
-                  <div className="callout info">
-                    Select a focus area in the left panel to weight its space types.
+            {tab === "spaces" && (
+              <>
+                <FocusAreaPicker
+                  focusAreas={level.focusAreas}
+                  selected={nav.focusArea}
+                  onSelect={(name) => {
+                    setNav({ focusArea: name });
+                  }}
+                />
+                {!nav.focusArea ? (
+                  <div className="card weighting-panel">
+                    <div className="callout info">
+                      Choose a focus area above to weight its space types.
+                    </div>
                   </div>
-                </div>
-              ) : (
-                <WeightSetPanel
+                ) : (
+                  <WeightSetPanel
                   title={`${nav.focusArea} — space type mix`}
                   description="Weights are relative within this focus area. Not-required space types are flagged; include them in the donut only when you choose to."
                   slices={spaceSlices.slices}
@@ -556,16 +614,26 @@ export function WeightingPage() {
                   )}
                   progressLabel="Space types"
                 />
-              ))}
+                )}
+              </>
+            )}
 
-            {tab === "categories" &&
-              (!selectedSpace ? (
-                <div className="card weighting-panel">
-                  <div className="callout info">
-                    Select a space type in the left panel to weight its categories.
+            {tab === "categories" && (
+              <>
+                <SpaceTypeTable
+                  focusAreas={level.focusAreas}
+                  selectedId={nav.spaceTypeId}
+                  onSelect={(focusArea, spaceTypeId) => {
+                    setNav({ focusArea, spaceTypeId });
+                  }}
+                />
+                {!selectedSpace ? (
+                  <div className="card weighting-panel">
+                    <div className="callout info">
+                      Choose a space type above to weight its categories.
+                    </div>
                   </div>
-                </div>
-              ) : !selectedSpace.catalogSpaceTypeId ? (
+                ) : !selectedSpace.catalogSpaceTypeId ? (
                 <div className="card weighting-panel">
                   <div className="callout warn">
                     <strong>{selectedSpace.name}</strong> is in the school-level requirements
@@ -613,15 +681,7 @@ export function WeightingPage() {
                         selectedSpace.catalogSpaceTypeId,
                         cat,
                       ).map((q) => ({ id: q.id, text: q.text })),
-                      onSessionChange: (p) => {
-                        if (!session.categoryWeights[key]) {
-                          patchSession("categoryWeights", key, {
-                            importance: 6,
-                            includeInScore: true,
-                            ...p,
-                          });
-                        } else patchSession("categoryWeights", key, p);
-                      },
+                      onSessionChange: (p) => patchSession("categoryWeights", key, p),
                     };
                   })}
                   progressLabel="Categories"
@@ -646,14 +706,23 @@ export function WeightingPage() {
                     </div>
                   }
                 />
-              ))}
+              )}
+              </>
+            )}
 
-            {tab === "subcategories" &&
-              (!selectedSpace?.catalogSpaceTypeId ? (
+            {tab === "subcategories" && (
+              <>
+                <SpaceTypeTable
+                  focusAreas={level.focusAreas}
+                  selectedId={nav.spaceTypeId}
+                  onSelect={(focusArea, spaceTypeId) => {
+                    setNav({ focusArea, spaceTypeId, category: undefined });
+                  }}
+                />
+                {!selectedSpace?.catalogSpaceTypeId ? (
                 <div className="card weighting-panel">
                   <div className="callout info">
-                    Select a catalog-matched space type, then a category, to weight
-                    subcategories.
+                    Choose a space type above, then a category, to weight subcategories.
                   </div>
                 </div>
               ) : (
@@ -721,18 +790,16 @@ export function WeightingPage() {
                             sub,
                           ).map((q) => ({ id: q.id, text: q.text })),
                           onSessionChange: (p) =>
-                            patchSession("subcategoryWeights", key, {
-                              importance: 6,
-                              includeInScore: true,
-                              ...p,
-                            }),
+                            patchSession("subcategoryWeights", key, p),
                         };
                       })}
                       progressLabel="Subcategories"
                     />
                   )}
                 </>
-              ))}
+              )}
+              </>
+            )}
           </section>
         </div>
       )}

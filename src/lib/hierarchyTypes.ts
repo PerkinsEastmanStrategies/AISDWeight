@@ -53,6 +53,7 @@ export type WeightEntry = {
 
 export type WeightingSession = {
   company: string;
+  reviewerName: string;
   contact: string;
   schoolLevel: SchoolLevelId | "";
   submittedAt?: string;
@@ -81,6 +82,7 @@ export type RollupSuggestion = {
 export type CompanySuggestionsV3 = {
   version: 3;
   company: string;
+  reviewerName?: string;
   contact?: string;
   schoolLevel: SchoolLevelId;
   exportedAt: string;

@@ -23,6 +23,7 @@ end $$;
 create table if not exists public.weighting_submissions (
   id uuid primary key default gen_random_uuid(),
   company text not null,
+  reviewer_name text,
   contact text,
   school_level public.school_level not null,
   submitted_at timestamptz not null default now(),
@@ -108,3 +109,6 @@ create policy weighting_items_select_anon
   for select
   to anon, authenticated
   using (true);
+
+alter table public.weighting_submissions
+  add column if not exists reviewer_name text;
