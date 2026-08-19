@@ -272,4 +272,65 @@
   position: relative;
   z-index: 95;
 }
+.layer-tabs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 0.5rem;
+  margin-bottom: 0.85rem;
+  padding: 0.65rem;
+}
+.layer-tabs button {
+  border: 1px solid var(--line, #d4d0c8);
+  background: var(--card, #fffcf9);
+  color: var(--ink, #4b4b4b);
+  font: inherit;
+  cursor: pointer;
+  border-radius: 12px;
+  padding: 0.7rem 0.85rem 0.65rem;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.08rem;
+  min-height: 100%;
+}
+.layer-tabs button:hover {
+  background: var(--bg-deep, #e6e2da);
+}
+.layer-tabs button.active {
+  background: var(--accent, #293678);
+  border-color: var(--accent, #293678);
+  color: #fff;
+}
+.layer-tabs button.active:hover {
+  filter: brightness(1.08);
+  background: var(--accent, #293678);
+}
+.layer-tab-parent {
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.25;
+}
+.layer-tab-child {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  line-height: 1.25;
+  margin: 0.05rem 0 0.4rem;
+}
+.layer-tab-elbow {
+  flex: none;
+  display: block;
+}
+.layer-tab-sub {
+  font-size: 0.72rem;
+  font-weight: 400;
+  line-height: 1.35;
+  opacity: 0.78;
+}
+.layer-tabs button.active .layer-tab-sub {
+  opacity: 0.9;
+}
 

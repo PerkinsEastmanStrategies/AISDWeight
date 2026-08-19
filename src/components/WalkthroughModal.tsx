@@ -121,6 +121,27 @@ export const WALKTHROUGH_STEPS: WalkthroughStep[] = [
     ),
   },
   {
+    id: "layer-tabs",
+    title: "Choose the next layer",
+    target: "layer-tabs",
+    tab: "building",
+    needsWorkspace: true,
+    dock: "bottom",
+    body: (
+      <>
+        <p>
+          Use these four buttons to pick the next layer of weighting. Start with{" "}
+          <strong>Building</strong> (Focus areas), then move down to{" "}
+          <strong>Focus area</strong> (Space types), <strong>Space type</strong>{" "}
+          (Categories), and <strong>Category</strong> (Subcategories).
+        </p>
+        <p>
+          Each layer’s weights roll up into the score of the layer above.
+        </p>
+      </>
+    ),
+  },
+  {
     id: "nav-spaces-pick",
     title: "Choose a focus area",
     target: "nav-spaces",
@@ -131,11 +152,11 @@ export const WALKTHROUGH_STEPS: WalkthroughStep[] = [
     body: (
       <>
         <p>
-          Open <strong>Focus area ← Space types</strong>. Pick a focus area from this
-          pill row. It uses the same style as the tabs across the top.
+          Open the <strong>Focus area</strong> layer (Space types). Pick a focus area
+          from this pill row.
         </p>
         <p>
-          Start with <strong>Building ← Focus areas</strong> if you have not weighted
+          Start with <strong>Building</strong> (Focus areas) if you have not weighted
           the focus areas yet.
         </p>
       </>
@@ -169,9 +190,9 @@ export const WALKTHROUGH_STEPS: WalkthroughStep[] = [
     body: (
       <>
         <p>
-          Open <strong>Space type ← Categories</strong>. The table headers are focus
-          areas and are not clickable. Click a space type in a column to open that
-          space’s categories.
+          Open the <strong>Space type</strong> layer (Categories). The table headers
+          are focus areas and are not clickable. Click a space type in a column to
+          open that space’s categories.
         </p>
       </>
     ),
@@ -204,8 +225,8 @@ export const WALKTHROUGH_STEPS: WalkthroughStep[] = [
     body: (
       <>
         <p>
-          Open <strong>Category ← Subcategories</strong>, then pick a category from this
-          dropdown to open that set of subcategories.
+          Open the <strong>Category</strong> layer (Subcategories), then pick a
+          category from this dropdown to open that set of subcategories.
         </p>
       </>
     ),

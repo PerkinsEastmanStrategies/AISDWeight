@@ -42,6 +42,59 @@ import { IMPORTANCE_LEGEND } from "../lib/relative";
 
 type LevelTab = "building" | "spaces" | "categories" | "subcategories";
 
+const LAYER_TABS: {
+  id: LevelTab;
+  parent: string;
+  child: string;
+  sub: string;
+}[] = [
+  {
+    id: "building",
+    parent: "Building",
+    child: "Focus areas",
+    sub: "Focus Areas roll up into the Building Score",
+  },
+  {
+    id: "spaces",
+    parent: "Focus area",
+    child: "Space types",
+    sub: "Space Types roll up into the Focus Areas",
+  },
+  {
+    id: "categories",
+    parent: "Space type",
+    child: "Categories",
+    sub: "Categories roll up into the Space Types",
+  },
+  {
+    id: "subcategories",
+    parent: "Category",
+    child: "Subcategories",
+    sub: "Subcategories roll up into the Categories",
+  },
+];
+
+function LayerElbow() {
+  return (
+    <svg
+      className="layer-tab-elbow"
+      viewBox="0 0 16 18"
+      width="14"
+      height="16"
+      aria-hidden="true"
+    >
+      <path
+        d="M4 1v10h9M10.5 8.5 13 11l-2.5 2.5"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinecap="square"
+        strokeLinejoin="miter"
+      />
+    </svg>
+  );
+}
+
 type NavSelection = {
   focusArea?: string;
   spaceTypeId?: string;
@@ -634,22 +687,20 @@ export function WeightingPage() {
           </aside>
 
           <section className="weighting-main">
-            <div className="level-tabs card">
-              {(
-                [
-                  ["building", "Building ← Focus areas"],
-                  ["spaces", "Focus area ← Space types"],
-                  ["categories", "Space type ← Categories"],
-                  ["subcategories", "Category ← Subcategories"],
-                ] as const
-              ).map(([id, label]) => (
+            <div className="layer-tabs card" data-walkthrough="layer-tabs">
+              {LAYER_TABS.map(({ id, parent, child, sub }) => (
                 <button
                   key={id}
                   type="button"
                   className={tab === id ? "active" : ""}
                   onClick={() => setTab(id)}
                 >
-                  {label}
+                  <span className="layer-tab-parent">{parent}</span>
+                  <span className="layer-tab-child">
+                    <LayerElbow />
+                    {child}
+                  </span>
+                  <span className="layer-tab-sub">{sub}</span>
                 </button>
               ))}
             </div>
