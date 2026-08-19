@@ -50,27 +50,27 @@ const LAYER_TABS: {
 }[] = [
   {
     id: "building",
-    parent: "Building",
-    child: "Focus areas",
-    sub: "Focus Areas roll up into the Building Score",
+    parent: "Building Score",
+    child: "Focus Area",
+    sub: "Focus Area roll up into the Building Score",
   },
   {
     id: "spaces",
-    parent: "Focus area",
-    child: "Space types",
-    sub: "Space Types roll up into the Focus Areas",
+    parent: "Focus Area",
+    child: "Space Type",
+    sub: "Space Type roll up into the Focus Area",
   },
   {
     id: "categories",
-    parent: "Space type",
-    child: "Categories",
-    sub: "Categories roll up into the Space Types",
+    parent: "Space Type",
+    child: "Category",
+    sub: "Category roll up into the Space Type",
   },
   {
     id: "subcategories",
     parent: "Category",
-    child: "Subcategories",
-    sub: "Subcategories roll up into the Categories",
+    child: "Subcategory",
+    sub: "Subcategory roll up into the Category",
   },
 ];
 

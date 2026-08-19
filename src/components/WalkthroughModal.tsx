@@ -131,9 +131,9 @@ export const WALKTHROUGH_STEPS: WalkthroughStep[] = [
       <>
         <p>
           Use these four buttons to pick the next layer of weighting. Start with{" "}
-          <strong>Building</strong> (Focus areas), then move down to{" "}
-          <strong>Focus area</strong> (Space types), <strong>Space type</strong>{" "}
-          (Categories), and <strong>Category</strong> (Subcategories).
+          <strong>Building Score</strong> (Focus Area), then move down to{" "}
+          <strong>Focus Area</strong> (Space Type), <strong>Space Type</strong>{" "}
+          (Category), and <strong>Category</strong> (Subcategory).
         </p>
         <p>
           Each layer’s weights roll up into the score of the layer above.
@@ -152,12 +152,12 @@ export const WALKTHROUGH_STEPS: WalkthroughStep[] = [
     body: (
       <>
         <p>
-          Open the <strong>Focus area</strong> layer (Space types). Pick a focus area
+          Open the <strong>Focus Area</strong> layer (Space Type). Pick a focus area
           from this pill row.
         </p>
         <p>
-          Start with <strong>Building</strong> (Focus areas) if you have not weighted
-          the focus areas yet.
+          Start with <strong>Building Score</strong> (Focus Area) if you have not
+          weighted the focus areas yet.
         </p>
       </>
     ),
@@ -190,9 +190,9 @@ export const WALKTHROUGH_STEPS: WalkthroughStep[] = [
     body: (
       <>
         <p>
-          Open the <strong>Space type</strong> layer (Categories). The table headers
-          are focus areas and are not clickable. Click a space type in a column to
-          open that space’s categories.
+          Open the <strong>Space Type</strong> layer (Category). The table headers are
+          focus areas and are not clickable. Click a space type in a column to open
+          that space’s categories.
         </p>
       </>
     ),
@@ -225,8 +225,8 @@ export const WALKTHROUGH_STEPS: WalkthroughStep[] = [
     body: (
       <>
         <p>
-          Open the <strong>Category</strong> layer (Subcategories), then pick a
-          category from this dropdown to open that set of subcategories.
+          Open the <strong>Category</strong> layer (Subcategory), then pick a category
+          from this dropdown to open that set of subcategories.
         </p>
       </>
     ),
