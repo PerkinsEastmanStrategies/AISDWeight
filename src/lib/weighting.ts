@@ -261,6 +261,82 @@ export function schoolLevelReviewCounts(
   ];
 }
 
+export function overallReviewCount(label: string, rows: ReviewCount[]): ReviewCount {
+  return {
+    label,
+    scored: rows.reduce((n, r) => n + r.scored, 0),
+    total: rows.reduce((n, r) => n + r.total, 0),
+  };
+}
+
+export type CountRange = { min: number; max: number };
+
+function pushRange(list: number[], n: number) {
+  if (n > 0) list.push(n);
+}
+
+function toRange(list: number[]): CountRange {
+  if (!list.length) return { min: 0, max: 0 };
+  return { min: Math.min(...list), max: Math.max(...list) };
+}
+
+export function formatCountRange(
+  range: CountRange,
+  noun: string,
+  plural = `${noun}s`,
+) {
+  if (range.max <= 0) return plural;
+  const word = range.max === 1 ? noun : plural;
+  if (range.min === range.max) return `${range.min} ${word}`;
+  return `${range.min}–${range.max} ${word}`;
+}
+
+export function hierarchyLayerRanges(catalog: Catalog, hierarchy: SiteHierarchy) {
+  const faPerLevel: number[] = [];
+  const stPerFa: number[] = [];
+  const catPerSt: number[] = [];
+  const subPerCat: number[] = [];
+  const qPerSub: number[] = [];
+
+  for (const level of hierarchy.schoolLevels) {
+    pushRange(faPerLevel, level.focusAreas.length);
+    for (const fa of level.focusAreas) {
+      pushRange(stPerFa, fa.spaceTypes.length);
+      for (const st of fa.spaceTypes) {
+        const cats = categoriesForCatalogSpace(catalog, st.catalogSpaceTypeId);
+        pushRange(catPerSt, cats.length);
+        for (const cat of cats) {
+          const subs = subcategoriesForCatalogSpace(
+            catalog,
+            st.catalogSpaceTypeId,
+            cat,
+          );
+          pushRange(subPerCat, subs.length);
+          for (const sub of subs) {
+            pushRange(
+              qPerSub,
+              questionsInSubcategory(
+                catalog,
+                st.catalogSpaceTypeId,
+                cat,
+                sub,
+              ).length,
+            );
+          }
+        }
+      }
+    }
+  }
+
+  return {
+    focusAreasPerLevel: toRange(faPerLevel),
+    spaceTypesPerFocus: toRange(stPerFa),
+    categoriesPerSpace: toRange(catPerSt),
+    subcategoriesPerCategory: toRange(subPerCat),
+    questionsPerSubcategory: toRange(qPerSub),
+  };
+}
+
 export function categoriesForCatalogSpace(
   catalog: Catalog,
   catalogSpaceTypeId: string | null,

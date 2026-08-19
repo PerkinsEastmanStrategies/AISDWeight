@@ -8,6 +8,7 @@ const SUGGESTIONS_V3_KEY = "esa-scoring-company-suggestions-v3";
 const OVERRIDES_KEY = "esa-scoring-similarity-overrides";
 const REVIEWER_DRAFT_KEY = "esa-scoring-reviewer-draft-v3";
 const WEIGHTING_SESSION_KEY = "esa-scoring-weighting-session-v1";
+const WALKTHROUGH_KEY = "esa-scoring-walkthrough-v1";
 
 export function loadCompanySuggestions(): CompanySuggestions[] {
   try {
@@ -68,6 +69,22 @@ export function saveWeightingSession(session: WeightingSession) {
 
 export function clearWeightingSession() {
   localStorage.removeItem(WEIGHTING_SESSION_KEY);
+}
+
+export function hasSeenWalkthrough() {
+  try {
+    return localStorage.getItem(WALKTHROUGH_KEY) === "1";
+  } catch {
+    return false;
+  }
+}
+
+export function markWalkthroughSeen() {
+  try {
+    localStorage.setItem(WALKTHROUGH_KEY, "1");
+  } catch {
+    /* ignore quota / private mode */
+  }
 }
 
 export function saveCompanySuggestions(list: CompanySuggestions[]) {

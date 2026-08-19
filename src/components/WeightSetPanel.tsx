@@ -55,11 +55,11 @@ export function WeightSetPanel({
         rows={[{ label: progressLabel, scored, total: items.length }]}
       />
 
-      <div className="donut-panel">
+      <div className="donut-panel" data-walkthrough="score-donut">
         <DonutChart title={typeof title === "string" ? title : "Weight mix"} slices={slices} total={total} />
       </div>
 
-      <div className="weight-table-wrap">
+      <div className="weight-table-wrap" data-walkthrough="score-weights">
         <table className="data weight-compact-table">
           <thead>
             <tr>

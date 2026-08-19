@@ -142,3 +142,124 @@
 .space-picker-cell.active { background: var(--accent, #293678); color: #fff; }
 .space-picker-cell.active .pill { border-color: #fff6; }
 
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+}
+.how-to-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.how-to-icon {
+  display: inline-flex;
+  width: 1.15rem;
+  height: 1.15rem;
+  border: 1.5px solid currentColor;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1;
+}
+.setup-level-tracker {
+  margin-top: 1rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--line, #d4d0c8);
+}
+[data-walkthrough] {
+  scroll-margin-top: 12rem;
+  scroll-margin-bottom: 12rem;
+}
+.walkthrough-spotlight {
+  position: relative;
+  z-index: 90;
+  border-radius: var(--radius, 10px);
+  box-shadow: 0 0 0 3px var(--accent, #293678), 0 0 0 9999px rgba(41, 54, 120, 0.42);
+  background: var(--card, #fffcf9);
+}
+.walkthrough-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 120;
+  pointer-events: none;
+  padding: 1.25rem;
+}
+.walkthrough-overlay.is-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(41, 54, 120, 0.45);
+  pointer-events: auto;
+}
+.walkthrough-overlay.is-docked {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  background: transparent;
+}
+.walkthrough-overlay.is-docked-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  background: transparent;
+  padding-top: 4.75rem;
+}
+.walkthrough-dialog {
+  pointer-events: auto;
+  position: relative;
+  z-index: 121;
+  width: min(420px, 100%);
+  max-height: min(46vh, 520px);
+  overflow: auto;
+  background: var(--card, #fffcf9);
+  box-shadow: 0 0 0 3px var(--accent, #293678), 0 16px 40px rgba(41, 54, 120, 0.28);
+}
+.walkthrough-overlay.is-center .walkthrough-dialog {
+  max-height: min(90vh, 720px);
+}
+.walkthrough-kicker {
+  margin: 0 0 0.25rem;
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.walkthrough-body p,
+.walkthrough-body li {
+  margin: 0 0 0.75rem;
+}
+.walkthrough-body ol {
+  margin: 0 0 0.75rem;
+  padding-left: 1.2rem;
+}
+.walkthrough-dots {
+  display: flex;
+  gap: 0.4rem;
+  margin: 0.5rem 0 1rem;
+  flex-wrap: wrap;
+}
+.walkthrough-dots button {
+  width: 0.55rem;
+  height: 0.55rem;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: var(--line, #d4d0c8);
+  cursor: pointer;
+}
+.walkthrough-dots button.active {
+  background: var(--accent, #293678);
+  width: 1.15rem;
+  border-radius: 999px;
+}
+.walkthrough-actions {
+  align-items: center;
+}
+.app-header {
+  position: relative;
+  z-index: 95;
+}
+

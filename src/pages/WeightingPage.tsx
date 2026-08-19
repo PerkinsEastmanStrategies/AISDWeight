@@ -3,6 +3,7 @@ import { useAppData } from "../lib/DataContext";
 import type {
   CompanySuggestionsV3,
   HierarchyFocusArea,
+  HierarchySchoolLevel,
   HierarchySpaceType,
   SchoolLevelId,
   WeightEntry,
@@ -19,6 +20,7 @@ import {
   isIncludedInRollup,
   questionsInCategory,
   questionsInSubcategory,
+  overallReviewCount,
   schoolLevelReviewCounts,
   seedSessionForLevel,
   spaceTypeKey,
@@ -35,6 +37,7 @@ import { type PeerRow } from "../components/WeightEditorRow";
 import { ScoringHierarchyChart } from "../components/ScoringHierarchyChart";
 import { WeightSetPanel } from "../components/WeightSetPanel";
 import { ReviewTracker } from "../components/ReviewTracker";
+import { useWalkthroughTour } from "../components/WalkthroughModal";
 import { IMPORTANCE_LEGEND } from "../lib/relative";
 
 type LevelTab = "building" | "spaces" | "categories" | "subcategories";
@@ -86,7 +89,7 @@ function FocusAreaPicker({
   onSelect: (name: string) => void;
 }) {
   return (
-    <div className="card picker-box">
+    <div className="card picker-box" data-walkthrough="nav-spaces">
       <p className="muted" style={{ marginTop: 0, marginBottom: "0.55rem" }}>
         Choose a focus area
       </p>
@@ -110,14 +113,16 @@ function SpaceTypeTable({
   focusAreas,
   selectedId,
   onSelect,
+  tourId,
 }: {
   focusAreas: HierarchyFocusArea[];
   selectedId?: string;
   onSelect: (focusArea: string, spaceTypeId: string) => void;
+  tourId?: string;
 }) {
   const maxRows = Math.max(0, ...focusAreas.map((fa) => fa.spaceTypes.length));
   return (
-    <div className="card picker-box">
+    <div className="card picker-box" data-walkthrough={tourId}>
       <p className="muted" style={{ marginTop: 0, marginBottom: "0.55rem" }}>
         Choose a space type
       </p>
@@ -163,8 +168,21 @@ function SpaceTypeTable({
   );
 }
 
+function firstCatalogMatch(level: HierarchySchoolLevel) {
+  for (const fa of level.focusAreas) {
+    for (const st of fa.spaceTypes) {
+      if (st.catalogSpaceTypeId) return { focusArea: fa, spaceType: st };
+    }
+  }
+  const fa = level.focusAreas[0];
+  return fa?.spaceTypes[0]
+    ? { focusArea: fa, spaceType: fa.spaceTypes[0] }
+    : undefined;
+}
+
 export function WeightingPage() {
   const { catalog, hierarchy, companiesV3 } = useAppData();
+  const tour = useWalkthroughTour();
   const [session, setSession] = useState(emptyWeightingSession);
   const [tab, setTab] = useState<LevelTab>("building");
   const [nav, setNav] = useState<NavSelection>({});
@@ -188,6 +206,74 @@ export function WeightingPage() {
     setSession((s) => seedSessionForLevel(s, lv));
     // eslint-disable-next-line react-hooks/exhaustive-deps -- seed once when level chosen
   }, [hierarchy, session.schoolLevel]);
+
+  useEffect(() => {
+    if (!tour.open || !tour.step?.tab || !hierarchy) return;
+
+    if (!session.schoolLevel) {
+      const es = getSchoolLevel(hierarchy, "ES");
+      if (!es) return;
+      setSession((s) => seedSessionForLevel({ ...s, schoolLevel: "ES" }, es));
+      return;
+    }
+
+    const lv = getSchoolLevel(hierarchy, session.schoolLevel);
+    if (!lv) return;
+
+    if (tab !== tour.step.tab) setTab(tour.step.tab);
+
+    const match = firstCatalogMatch(lv);
+    const mode = tour.step.navSelect;
+    if (mode === "clear") {
+      setNav((n) =>
+        n.focusArea || n.spaceTypeId || n.category ? {} : n,
+      );
+    } else if (mode === "focus") {
+      const faName = match?.focusArea.name ?? lv.focusAreas[0]?.name;
+      if (faName) {
+        setNav((n) => (n.focusArea === faName && !n.spaceTypeId ? n : { focusArea: faName }));
+      }
+    } else if (mode === "space" && match) {
+      setNav((n) =>
+        n.focusArea === match.focusArea.name &&
+        n.spaceTypeId === match.spaceType.id &&
+        !n.category
+          ? n
+          : { focusArea: match.focusArea.name, spaceTypeId: match.spaceType.id },
+      );
+    } else if (mode === "category" && match && catalog) {
+      const cats = categoriesForCatalogSpace(
+        catalog,
+        match.spaceType.catalogSpaceTypeId,
+      );
+      const category = cats[0];
+      setNav((n) =>
+        n.focusArea === match.focusArea.name &&
+        n.spaceTypeId === match.spaceType.id &&
+        n.category === category
+          ? n
+          : {
+              focusArea: match.focusArea.name,
+              spaceTypeId: match.spaceType.id,
+              category,
+            },
+      );
+    }
+
+    const timer = window.setTimeout(() => {
+      window.dispatchEvent(new Event("walkthrough-respotlight"));
+    }, 80);
+    return () => window.clearTimeout(timer);
+  }, [
+    tour.open,
+    tour.step?.id,
+    tour.step?.tab,
+    tour.step?.navSelect,
+    session.schoolLevel,
+    hierarchy,
+    catalog,
+    tab,
+  ]);
 
   function chooseLevel(id: SchoolLevelId) {
     if (!hierarchy) return;
@@ -311,6 +397,16 @@ export function WeightingPage() {
     return schoolLevelReviewCounts(catalog, level, session);
   }, [catalog, level, session]);
 
+  const allLevelProgress = useMemo(() => {
+    if (!catalog || !hierarchy) return [];
+    return hierarchy.schoolLevels.map((s) =>
+      overallReviewCount(
+        `${s.label} (${s.id})`,
+        schoolLevelReviewCounts(catalog, s, session),
+      ),
+    );
+  }, [catalog, hierarchy, session]);
+
   function setupError(): string | null {
     if (!session.company.trim()) return "Enter a company name first.";
     if (!session.reviewerName.trim()) return "Enter a name first.";
@@ -376,7 +472,7 @@ export function WeightingPage() {
 
   return (
     <div className="weighting-page">
-      <div className="card weighting-guide">
+      <div className="card weighting-guide" data-walkthrough="score-guide">
         <h2>How weighting works</h2>
         <div className="guide-grid">
           <div>
@@ -407,7 +503,9 @@ export function WeightingPage() {
           </div>
           <div>
             <h3 style={{ marginTop: 0 }}>Scoring hierarchy</h3>
-            <ScoringHierarchyChart />
+            {catalog && (
+              <ScoringHierarchyChart catalog={catalog} hierarchy={hierarchy} />
+            )}
           </div>
         </div>
       </div>
@@ -416,29 +514,32 @@ export function WeightingPage() {
         <h2>Reviewer setup</h2>
         <p className="muted">
           Enter who is reviewing and which school level to weight. All fields are required
-          before you can submit. Use the tabs to move through focus areas → space types →
-          categories → subcategories.
+          before you can submit. Score all three school levels (Elementary, Middle School,
+          and High School). You can submit one level at a time, or score all three and then
+          submit.
         </p>
-        <div className="grid-2">
-          <div className="field">
-            <label>Company</label>
-            <input
-              required
-              value={session.company}
-              onChange={(e) => setSession({ ...session, company: e.target.value })}
-            />
+        <div data-walkthrough="setup-inputs">
+          <div className="grid-2">
+            <div className="field">
+              <label>Company</label>
+              <input
+                required
+                value={session.company}
+                onChange={(e) => setSession({ ...session, company: e.target.value })}
+              />
+            </div>
+            <div className="field">
+              <label>Name</label>
+              <input
+                required
+                value={session.reviewerName}
+                onChange={(e) =>
+                  setSession({ ...session, reviewerName: e.target.value })
+                }
+              />
+            </div>
           </div>
-          <div className="field">
-            <label>Name</label>
-            <input
-              required
-              value={session.reviewerName}
-              onChange={(e) => setSession({ ...session, reviewerName: e.target.value })}
-            />
-          </div>
-        </div>
-        <div className="grid-2" style={{ marginTop: "0.75rem" }}>
-          <div className="field">
+          <div className="field" style={{ marginTop: "0.75rem" }}>
             <label>Email</label>
             <input
               required
@@ -447,7 +548,12 @@ export function WeightingPage() {
               onChange={(e) => setSession({ ...session, contact: e.target.value })}
             />
           </div>
-          <div className="field">
+        </div>
+        <div
+          className="field"
+          data-walkthrough="setup-level"
+          style={{ marginTop: "0.75rem", maxWidth: 360 }}
+        >
             <label>School level</label>
             <select
               required
@@ -465,9 +571,16 @@ export function WeightingPage() {
                 </option>
               ))}
             </select>
-          </div>
         </div>
-        <div className="row" style={{ marginTop: "0.75rem" }}>
+        {allLevelProgress.length > 0 && (
+          <div className="setup-level-tracker" data-walkthrough="progress-setup">
+            <ReviewTracker
+              title="Progress by school level"
+              rows={allLevelProgress}
+            />
+          </div>
+        )}
+        <div className="row" style={{ marginTop: "0.75rem" }} data-walkthrough="submit-actions">
           <button
             type="button"
             className="btn primary"
@@ -514,7 +627,7 @@ export function WeightingPage() {
         <div className="callout info">Select a school level to open the weighting workspace.</div>
       ) : (
         <div className="weighting-workspace">
-          <aside className="weighting-nav card">
+          <aside className="weighting-nav card" data-walkthrough="progress-left">
             <h3 style={{ marginTop: 0 }}>{level.label}</h3>
             <ReviewTracker title="School-level progress" rows={globalProgress} />
           </aside>
@@ -626,6 +739,7 @@ export function WeightingPage() {
                   onSelect={(focusArea, spaceTypeId) => {
                     setNav({ focusArea, spaceTypeId });
                   }}
+                  tourId="nav-categories"
                 />
                 {!selectedSpace ? (
                   <div className="card weighting-panel">
@@ -711,7 +825,7 @@ export function WeightingPage() {
             )}
 
             {tab === "subcategories" && (
-              <>
+              <div data-walkthrough="nav-subcategories">
                 <SpaceTypeTable
                   focusAreas={level.focusAreas}
                   selectedId={nav.spaceTypeId}
@@ -727,7 +841,11 @@ export function WeightingPage() {
                 </div>
               ) : (
                 <>
-                  <div className="card" style={{ marginBottom: "0.85rem" }}>
+                  <div
+                    className="card"
+                    data-walkthrough="nav-category-select"
+                    style={{ marginBottom: "0.85rem" }}
+                  >
                     <div className="field" style={{ maxWidth: 360, marginBottom: 0 }}>
                       <label>Category</label>
                       <select
@@ -798,7 +916,7 @@ export function WeightingPage() {
                   )}
                 </>
               )}
-              </>
+              </div>
             )}
           </section>
         </div>
