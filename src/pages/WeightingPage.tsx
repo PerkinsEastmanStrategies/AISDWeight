@@ -511,6 +511,7 @@ export function WeightingPage() {
       </div>
 
       <div className="card weighting-setup">
+        <div data-walkthrough="setup-inputs">
         <h2>Reviewer setup</h2>
         <p className="muted">
           Enter who is reviewing and which school level to weight. All fields are required
@@ -518,7 +519,6 @@ export function WeightingPage() {
           and High School). You can submit one level at a time, or score all three and then
           submit.
         </p>
-        <div data-walkthrough="setup-inputs">
           <div className="grid-2">
             <div className="field">
               <label>Company</label>
@@ -552,11 +552,12 @@ export function WeightingPage() {
         <div
           className="field"
           data-walkthrough="setup-level"
-          style={{ marginTop: "0.75rem", maxWidth: 360 }}
+          style={{ marginTop: "0.75rem" }}
         >
             <label>School level</label>
             <select
               required
+              style={{ maxWidth: 360 }}
               value={session.schoolLevel}
               onChange={(e) => {
                 const v = e.target.value as SchoolLevelId | "";
@@ -846,10 +847,11 @@ export function WeightingPage() {
                     data-walkthrough="nav-category-select"
                     style={{ marginBottom: "0.85rem" }}
                   >
-                    <div className="field" style={{ maxWidth: 360, marginBottom: 0 }}>
+                    <div className="field" style={{ marginBottom: 0 }}>
                       <label>Category</label>
                       <select
                         value={nav.category ?? ""}
+                        style={{ maxWidth: 360 }}
                         onChange={(e) =>
                           setNav((n) => ({
                             ...n,

@@ -42,7 +42,7 @@ export function WeightSetPanel({
   const scored = items.filter((i) => isReviewed(i.session)).length;
 
   return (
-    <div className="card weighting-panel">
+    <div className="card weighting-panel" data-walkthrough="score-panel">
       <div className="weight-panel-head">
         <div>
           <h3 style={{ margin: 0 }}>{title}</h3>

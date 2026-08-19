@@ -51,6 +51,7 @@ export const WALKTHROUGH_STEPS: WalkthroughStep[] = [
     id: "setup-inputs",
     title: "Your information",
     target: "setup-inputs",
+    dock: "top",
     body: (
       <>
         <p>
@@ -65,6 +66,7 @@ export const WALKTHROUGH_STEPS: WalkthroughStep[] = [
     id: "setup-level",
     title: "Choose a school level",
     target: "setup-level",
+    dock: "top",
     body: (
       <>
         <p>
@@ -211,7 +213,7 @@ export const WALKTHROUGH_STEPS: WalkthroughStep[] = [
   {
     id: "nav-subcategories-score",
     title: "Weight the subcategories",
-    target: "score-weights",
+    target: "score-panel",
     tab: "subcategories",
     needsWorkspace: true,
     navSelect: "category",
@@ -259,6 +261,7 @@ export const WALKTHROUGH_STEPS: WalkthroughStep[] = [
     id: "submit",
     title: "Submit",
     target: "submit-actions",
+    dock: "top",
     body: (
       <>
         <p>
