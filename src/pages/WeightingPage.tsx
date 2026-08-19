@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, type ReactNode } from "react";
 import { useAppData } from "../lib/DataContext";
 import type {
   CompanySuggestionsV3,
@@ -92,6 +92,58 @@ function LayerElbow() {
         strokeLinejoin="miter"
       />
     </svg>
+  );
+}
+
+const SCORE_ORDER: { tab: LevelTab; label: string }[] = [
+  { tab: "building", label: "Building Score" },
+  { tab: "spaces", label: "Focus Area" },
+  { tab: "categories", label: "Space Type" },
+  { tab: "subcategories", label: "Category" },
+  { tab: "subcategories", label: "Subcategory" },
+];
+
+function ScoreOrderTree({
+  activeTab,
+  onSelect,
+}: {
+  activeTab: LevelTab;
+  onSelect: (tab: LevelTab) => void;
+}) {
+  const current = LAYER_TABS.find((t) => t.id === activeTab);
+
+  function branch(nodes: typeof SCORE_ORDER, depth: number): ReactNode {
+    const [head, ...rest] = nodes;
+    if (!head) return null;
+    const isParent = head.label === current?.parent;
+    const isChild = head.label === current?.child;
+    return (
+      <ol className={depth === 0 ? "score-order-root" : undefined}>
+        <li>
+          <button
+            type="button"
+            className={`score-order-node level-${depth}${
+              isParent ? " is-parent" : isChild ? " is-child" : ""
+            }`}
+            onClick={() => onSelect(head.tab)}
+          >
+            <span className="score-order-dot" aria-hidden />
+            {head.label}
+          </button>
+          {rest.length > 0 ? branch(rest, depth + 1) : null}
+        </li>
+      </ol>
+    );
+  }
+
+  return (
+    <nav className="score-order-tree" aria-label="Scoring order">
+      <h3>Scoring order</h3>
+      <p className="muted score-order-lead">
+        Each layer rolls up into the one above it.
+      </p>
+      {branch(SCORE_ORDER, 0)}
+    </nav>
   );
 }
 
@@ -684,6 +736,7 @@ export function WeightingPage() {
           <aside className="weighting-nav card" data-walkthrough="progress-left">
             <h3 style={{ marginTop: 0 }}>{level.label}</h3>
             <ReviewTracker title="School-level progress" rows={globalProgress} />
+            <ScoreOrderTree activeTab={tab} onSelect={setTab} />
           </aside>
 
           <section className="weighting-main">

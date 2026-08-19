@@ -333,4 +333,87 @@
 .layer-tabs button.active .layer-tab-sub {
   opacity: 0.9;
 }
+.score-order-tree {
+  margin-top: 1.1rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--line, #d4d0c8);
+}
+.score-order-tree h3 {
+  margin: 0 0 0.25rem;
+  font-size: 1.05rem;
+}
+.score-order-lead {
+  margin: 0 0 0.7rem;
+  font-size: 0.78rem;
+  line-height: 1.35;
+}
+.score-order-tree ol {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 0.85rem;
+  border-left: 1.5px solid var(--line, #d4d0c8);
+}
+.score-order-tree .score-order-root {
+  padding-left: 0;
+  border-left: none;
+}
+.score-order-tree li {
+  position: relative;
+  margin: 0;
+}
+.score-order-tree ol ol > li::before {
+  content: "";
+  position: absolute;
+  left: -0.85rem;
+  top: 0.85rem;
+  width: 0.75rem;
+  height: 1.5px;
+  background: var(--line, #d4d0c8);
+}
+.score-order-node {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  width: 100%;
+  margin: 0.12rem 0;
+  padding: 0.32rem 0.45rem;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: none;
+  color: inherit;
+  font: inherit;
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+}
+.score-order-node:hover {
+  background: var(--accent-soft, #e4e8f2);
+}
+.score-order-node.is-parent {
+  background: var(--accent, #293678);
+  border-color: var(--accent, #293678);
+  color: #fff;
+}
+.score-order-node.is-child {
+  background: var(--accent-soft, #e4e8f2);
+  border-color: var(--accent, #293678);
+}
+.score-order-dot {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  flex: none;
+  background: currentColor;
+  opacity: 0.55;
+}
+.score-order-node.level-0 .score-order-dot { background: var(--aisd-dark-blue, #293678); opacity: 1; }
+.score-order-node.level-1 .score-order-dot { background: var(--aisd-blue, #547dbf); opacity: 1; }
+.score-order-node.level-2 .score-order-dot { background: var(--aisd-red, #b7000b); opacity: 1; }
+.score-order-node.level-3 .score-order-dot { background: var(--aisd-green, #5ba649); opacity: 1; }
+.score-order-node.level-4 .score-order-dot { background: var(--aisd-yellow, #f9bc15); opacity: 1; }
+.score-order-node.is-parent .score-order-dot {
+  background: #fff;
+  opacity: 1;
+}
 
